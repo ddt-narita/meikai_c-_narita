@@ -1,12 +1,27 @@
-#include<iostream>					//main
-using namespace std;				//キーボードから読み込んだ値を反復して表示
-									//
-int main (){						//5月1日
-	int x;							//成田修之
+/* 演習 01-09
+ * キーボードから読み込んだ値を反復して表示
+ * 作成日：5月1日
+ * 作成者：成田修之
+ * 更新日：5月8日
+ * 更新者：成田修之
+ */
 
-	cout<<"整数値：";
-	//キーボードから出力してｘに値を入力
-	cin >> x;
-	cout<<x<<"と入力しましたね。\n";
+#include<iostream>
+using namespace std;
 
+int main()
+{
+	//キーボードから入力するための変数
+	int nInput;
+
+	//入力を促す表示
+	cout	<< "整数値：";
+	//キーボードから出力してnInputに値を入力
+	cin		>> nInput;
+
+	//反復して入力したものを表示
+	cout 	<< nInput << "と入力しましたね。\n";
+
+	//返却値0
+	return 0;
 }
