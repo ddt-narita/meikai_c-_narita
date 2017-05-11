@@ -1,16 +1,33 @@
-#include<iostream>					//main
-using namespace std;				//2つの整数の値の差を表示する
-									//
-int main(){						//5月1日
-									//成田修之
-	int a,b;
+/* 演習02-08
+ * 2つの整数値の差を表示する
+ * 作成日：5月1日
+ * 作成者：成田修之
+ * 更新日：5月9日
+ * 更新者：成田修之 */
 
-	cout <<"整数a:";	cin>>a;
-	cout <<"整数b:";	cin>>b;
+#include<iostream>
+using namespace std;
 
-	//aが大きければa-bで、bのほうが大きければb-aで差を求める
-	int s = a>b?a-b:b-a;
+int main()
+{
+	int nInputA;	//差を比べるための変数a
+	int nInputB;	//差を比べるための変数b
 
-	cout <<"2つの整数の差は"<<s<<"です。\n";
 
+	//変数Aに入力を促す表示
+	cout	<< "整数a:";
+	//キーボードから入力
+	cin		>> nInputA;
+	//変数Bに入力を促す表示
+	cout	<< "整数b:";
+	//キーボードから入力
+	cin		>> nInputB;
+
+
+	//条件演算子を使ってaが大きければa-bで、bのほうが大きければb-aで差を求める
+	cout << "2つの整数の差は";
+	cout << (nInputA > nInputB ? nInputA - nInputB : nInputB - nInputA) << "です。\n";
+
+	//main関数の返却値0
+	return 0;
 }
