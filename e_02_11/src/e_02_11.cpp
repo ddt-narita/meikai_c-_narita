@@ -1,27 +1,68 @@
-#include<iostream>					//main
-using namespace std;				//入力された3つの整数の中央値を表示
-									//
-int main(){						//5月1日
-	int a,b,c;						//成田修之
+/* 演習 02-11
+ * 入力された3つの整数の中央値を表示
+ * 作成日：5月1日
+ * 作成者：成田修之
+ * 更新日：5月9日
+ * 更新者：成田修之
+ */
 
-	cout <<"整数値a：";		cin>>a;
-	cout <<"整数値b：";		cin>>b;
-	cout <<"整数値c：";		cin>>c;
+#include<iostream>
+using namespace std;
 
-	//中央値をあらかじめint型で宣言しておく
-	int center=a;
+int main()
+{
+	int nInputA;	//入力し中央値を求めるのに使う整数A
+	int nInputB;	//入力し中央値を求めるのに使う整数B
+	int nInputC;	//入力し中央値を求めるのに使う整数C
+	int nCenter;	//ABCの中央値を求め代入するのに使う変数
+
+	//整数Aに入力を促すための表示
+	cout 	<< "整数値a：";
+	//整数Aに値を代入
+	cin 	>> nInputA;
+	//整数Bに入力をうながすための表示
+	cout 	<< "整数値b：";
+	//整数Bに値を入力
+	cin 	>> nInputB;
+	//整数Cに入力を促すための表示
+	cout 	<< "整数値c：";
+	//整数Cに値を入力
+	cin 	>> nInputC;
+
+	//中央値をはじめ整数Aにしておく
+	nCenter = nInputA;
 
 	//a>bの時とa<bの時、数直線上でcがどの位置にいるかで分けて考える
-	if (a>b)
-		if(b>c)
-			center=b;
-		else if(a>c)
-			center=c;
+	//a>bの時
+	if (nInputA > nInputB) {
+		//cがbより小さい場合
+		if(nInputB > nInputC) {
+			//中央値はb
+			nCenter = nInputB;
 
-	if(a<b)
-		if(b<c)
-			center=b;
-		else if (a<c)
-			center=c;
-cout <<"中央値は"<<center<<"です。\n";
+		//cがaより小さい場合
+		} else if(nInputA > nInputC) {
+			//中央値はC
+			nCenter = nInputC;
+		}
+
+	//a<bの時
+	} else if(nInputA < nInputB) {
+		//cがbより大きい場合
+		if(nInputB < nInputC) {
+			//中央値はB
+			nCenter = nInputB;
+
+		//cがb以下でaより大きいとき
+		} else if (nInputA < nInputC) {
+			//中央値はC
+			nCenter = nInputC;
+		}
+	}
+	//中央値を表示
+	cout << "中央値は" << nCenter << "です。\n";
+
+	//main関数の返却値0
+	return 0;
+
 }
