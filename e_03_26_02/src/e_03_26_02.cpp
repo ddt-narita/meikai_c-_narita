@@ -1,3 +1,10 @@
+/* 演習 03-36-02
+ * 3本先取のじゃんけんゲーム
+ * 作成日：5月4日
+ * 作成者：成田修之
+ * 更新日：5月10日
+ * 更新者：成田修之
+ */
 #include<string>
 #include<ctime>
 #include<cstdlib>
@@ -5,11 +12,13 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
 
 	//ランダムな値を作る規準を設定
 	srand(time(NULL));
 
+	//じゃんけんゲームの開始を明示
 	cout << "じゃんけんゲーム3本勝負開始します\n";
 
 
@@ -28,55 +37,83 @@ int main() {
 
 		//0～2以外の数字が入力されたとき入力指示を繰り返す
 		for(; nInputHand < 0 || nInputHand > 2 ;){
+			//じゃんけんの手の入力を促す
 			cout	<< "じゃんけんっ！ グー…０,チョキ…１,パー…２：";
-			cin	>> nInputHand;
+			//キーボードから入力
+			cin		>> nInputHand;
 		}
 
 		//入力した値とランダムな手によって分ける
 		switch(nInputHand) {
-		 	 //入力した値がグーの時
-		 	 case 0: cout<<"あなた：グー\n私：";
-		 		 	  if(nHand == 0) {
-		 		 	   	  cout << "グー\nあいこです\n";
-		 	 	 	  } else if(nHand == 1) {
-		 	 	 		  cout << "チョキ\n勝ちです！\n";
-		 	 	 		  i++;
 
-		 	 	 	  } else {
-		 	 	 		  cout << "パー\n負けです\n";
-		 	 	 		  j++;
-		 	 	 	  } break;
-		 	 //チョキの時
-		 	 case 1: cout << "あなた：チョキ\n私：";
-		 		 	  if(nHand == 0) {
-		 		 	  	  cout << "グー\n負けです\n";
-		 		 	  	  j++;
-		 	 	 	  } else if(nHand == 1) {
-		 	 	 		  cout << "チョキ\nあいこです\n";
-		 	 	 	  } else {
-		 	 	 		  cout << "パー\n勝ちです！\n";
-		 	 	 		  i++;
-		 	 	 	  } break;
+		//入力した値がグーの時
+		case 0: cout<<"あなた：グー\n私：";
+			switch(nHand) {
+			//ランダムな手がグーの時
+			case 0: cout << "グー\nあいこです\n";break;
+			//ランダムな手がチョキの時
+			case 1: cout << "チョキ\n勝ちです！\n";
+				 	 //自分の勝ちをカウント
+					 i++;
+				 	 break;
+			//ランダムな手がパーの時
+			case 2: cout << "パー\n負けです\n";
+			  	     //相手の勝ちをカウント
+					 j++;
+			  	     break;
+			} break;
 
-		 	 //パーの時
-		 	 case 2: cout << "あなた：パー\n私：";
-		 		 	  if(nHand ==0) {
-		 		 	      cout << "グー\n勝ちです！\n";
-		 		 	      i++;
-		 		 	  } else if(nHand == 1) {
-		 		 		  cout << "チョキ\n負けです\n";
-		 		 		  j++;
-		 		 	  } else {
-		 		 		  cout << "パー\nあいこです";
-		 		 	  } break;
+		//チョキの時
+		case 1: cout << "あなた：チョキ\n私：";
+		    switch(nHand) {
+			//ランダムな手がグーの時
+		    case 0: cout << "グー\n負けです\n";
+				 	 //相手の勝ちをカウント
+		    		 j++;
+				 	 break;
+			//ランダムな手がチョキの時
+		    case 1: cout << "チョキ\nあいこです\n";
+				 	break;
+			//ランダムな手がパーの時
+		    case 2: cout << "パー\n勝ちです！\n";
+				    //自分の勝ちをカウント
+		    		i++;
+				    break;
+			} break;
+
+		//パーの時
+		case 2: cout << "あなた：パー\n私：";
+			switch(nHand) {
+			//ランダムな手がグーの時
+			case 0: cout << "グー\n勝ちです！\n";
+				    //自分の勝ちをカウント
+					i++;
+				    break;
+			//ランダムな手がチョキの時
+			case 1: cout << "チョキ\n負けです\n";
+				 	//相手の勝ちをカウント
+					j++;
+				 	break;
+			//ランダムな手がパーの時
+			case 2: cout << "パー\nあいこです";
+				 	 break;
+			} break;
 		}
+
 	}
 
 	//繰り返しが終了したとき自分と相手とどちらが3回勝ったかで分ける
+	//自分が3回勝った時
 	if(i >= 3){
+		//勝ったことを表示
 		cout << "あなたが3回勝ったのであなたの勝ちです\n終了します。\n";
+	//それ以外(3回負けた)の時
 	} else {
+		//負けたことを表示
 		cout << "あなたは3回負けたので私の勝ちです\n終了します。\n";
 	}
+
+	//main関数の返却値
+	return 0;
 
 }
