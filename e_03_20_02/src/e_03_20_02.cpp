@@ -1,33 +1,46 @@
+/* 演習03-20-02
+ * n段の右下直角三角形を作る
+ * 作成日：5月3日
+ * 作成者：成田修之
+ * 更新日：5月10日
+ * 更新者：成田修之
+ */
+
+
 //操作子を使うのでヘッダ<iomanip>をインクルード
-#include<iomanip>				//main
-#include<iostream>				//n段の右下直角三角形を作る
-using namespace std;			//
-int main(){					//5月3日
-								//成田修之
-	int nTriungle;
+#include<iomanip>
+#include<iostream>
+using namespace std;
+int main(){
+
+	int nTriangle;		//n段の三角形の段数を入力するための変数
+	//段数の入力を促すための表示
 	cout <<"右下直角の三角形を表示します。\n段数は：";
-	cin >> nTriungle;
+	//キーボードから入力
+	cin >> nTriangle;
 
 
-	//縦(nTriungle1)は入力した値で初期化しデクリメントしていき
+	//縦(i)は入力した値で初期化しデクリメントしていき
 	//0になるまで以下を繰り返す
-	for(int nTriungle1 = nTriungle; nTriungle1 >0 ; nTriungle1--){
+	for(int i = nTriangle; i > 0 ; i--){
 
-		//横(nTriungle2)は1～nまでインクリメントする間以下を繰り返す
-		for(int nTriungle2 = 1; nTriungle2 <= nTriungle; nTriungle2++){
+		//横(j)は1～nまでインクリメントする間以下を繰り返す
+		for(int j = 1; j <= nTriangle; j++){
 
-			//横から縦を引いた値が０未満なら空白文字を0以上なら＊を表示する
-			if((nTriungle2 - nTriungle1) >=0){
-				cout<<"*";
-			}
-			else{
-				cout<<' ';
+			//横から縦を引いた値がなら0以上の時
+			if((j - i) >=0){
+				//*を表示する。追加可能なようにダブルコーテーション
+				cout << "*";
+			//0未満の時
+			} else{
+				//空白文字を表示する。追加可能なようにダブルコーテーション
+				cout << " ";
 			}
 		}
-		//nTriungle1が一つ増える前に改行文字を出力する
-		cout<<'\n';
+		//iが一つ増える前に改行文字を出力する
+		cout << "\n";
 	}
 
-}//最初は操作子を使って作るのかと思ったが＊を表示するごとにその幅で出てきてしまい
- //どうしても思い浮かばず、正方形を作る中でいらないところでは空白文字を出力する
-//ようにして代替とした
+	//main関数の返却値0
+	return 0;
+}

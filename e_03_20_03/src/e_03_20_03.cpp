@@ -1,23 +1,35 @@
-#include <iostream>				//main
-using namespace std;				//右上直角三角形を作る
-									//
-int main()							//5月3日
-{									//成田修之
-	int nTriungle;
-	cout << "右上直角三角形を表示します\n段数は：";
-	cin >> nTriungle;
+/* 演習 03-20-03
+ * 右上直角三角形をつくる
+ * 作成日：5月3日
+ * 作成者：成田修之
+ * 更新日：5月10日
+ * 更新者：成田修之
+ */
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	int nTriangle;		//n段の三角形の段数の入力に使う
+
+	//段数の入力を促す
+	cout 	<< "右上直角三角形を表示します\n段数は：";
+	//キーボードから入力
+	cin 	>> nTriangle;
 
 	//縦１～入力された値まで1ずつ増やす間以下を繰り返す
-	for(int nTriungle1 = 1; nTriungle1 < nTriungle; nTriungle1++){
-
+	for(int i = 1; i <= nTriangle; i++) {
 		//横を１～入力された値まで1ずつ増やす間以下を繰り返す
-		for(int nTriungle2 = 1; nTriungle2 < nTriungle; nTriungle2++){
+		for(int j = 1; j <= nTriangle; j++) {
 
-			//横から縦を引いて0以上なら＊をそれ以外は空白文字を出力する
-			if((nTriungle2-nTriungle1) >= 0){
+			/*横から縦を引いて0以上の時
+			 *一文字表示に関しては追加可能なようにダブルコーテーション*/
+			if(j - i >= 0) {
+				//アスタリスクを表示
 				cout << "*";
-			}
-			else{
+			//0以外の時
+			} else {
+				//空白文字を表示
 				cout <<" ";
 			}
 		}
@@ -25,5 +37,7 @@ int main()							//5月3日
 		//縦が1つ増える前に改行文字を出力
 		cout << "\n";
 	}
-}//これもまた操作子をつかった方法が思い浮かばなかったので正方形を作って
-//いらないところは空白文字を出力することで代替した。
+
+	//main関数の返却値0
+	return 0;
+}

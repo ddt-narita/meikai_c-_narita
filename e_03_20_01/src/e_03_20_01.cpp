@@ -1,19 +1,37 @@
-#include<iostream>				//main
-using namespace std;			//n段の左上直角三角形を作る
-int main(){					//
-								//5月3日
-	int nTriungle;				//成田修之
-	cout <<"左上直角の三角形を表示します。\n段数は：";
-	cin >> nTriungle;
+/* 演習03-20-01
+ * n段の左上直角三角形を表示する
+ * 作成日：5月3日
+ * 作成者：成田修之
+ * 更新日：5月10日
+ * 更新者：成田修之
+ */
 
-	//nTriungleが入力した値から0になるまで繰り返す
-	for(int nTriungle1 = nTriungle; nTriungle1>0; nTriungle1--){
-		//nTriungleの数だけ*を表示する
-		for(int nTriungle2 = 1; nTriungle2 <= nTriungle1; nTriungle2++){
-			cout<<'*';
+#include<iostream>
+using namespace std;
+
+int main()
+{
+
+	int nTriangle;		//三角形の段数を入力するのに使う変数
+
+	//段数の入力を促す表示
+	cout	<<"左上直角の三角形を表示します。\n段数は：";
+	//キーボードから入力
+	cin 	>> nTriangle;
+
+	//入力した値を代入したものが0になるまで繰り返す
+	for(int i = nTriangle; i > 0; i--) {
+		//iの数だけ繰り返す
+		for(int j = 1; j <= i; j++){
+			//*を表示する。追加可能なようにダブルコーテーション
+			cout << "*";
 		}
-		//nTriungleが一つデクリメントされる前に改行文字を出力
-		cout<<'\n';
+		/*nTriungleが一つデクリメントされる前に改行文字を出力
+		 * 一文字表示に関しては追加可能なようにダブルコーテーション
+		 */
+		cout << "\n";
 	}
 
+	//main関数の返却値0
+	return 0;
 }
