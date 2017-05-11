@@ -1,21 +1,50 @@
-#include <iostream>					//main
-using namespace std;					//3つの整数の最小値
-										//
-int main(){							//5月1日
-	int a,b,c;							//成田修之
+/* 演習 02-10
+ * 3つの整数の最小値
+ * 作成日：5月1日
+ * 作成者：成田修之
+ * 更新日：5月9日
+ * 更新者：成田修之
+ */
 
-	cout <<"整数a：";	cin>>a;
-	cout <<"整数b：";	cin>>b;
-	cout <<"整数c：";	cin>>c;
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int nInputA;	//入力し最小値を求めるための整数A
+	int nInputB;	//入力し最小値を求めるための整数B
+	int nInputC;	//入力し最小値を求めるための整数C
+	int nMin;		//ABCの最小値を求め代入するための変数
+
+	//整数Aに入力を促すための表示
+	cout 	<< "整数a：";
+	//キーボードから入力
+	cin 	>>nInputA;
+	//整数Bに入力を促すための表示
+	cout 	<< "整数b：";
+	//キーボードから入力
+	cin 	>> nInputB;
+	//整数Cに入力を促すための表示
+	cout 	<< "整数c：";
+	//キーボードから入力
+	cin		>> nInputC;
 
 	//最小値minにaを初期化子として代入
-	int min =a;
+	nMin = nInputA;
 
-	//b,cがminより小さければそれをminとして代入
-	if(b<min)
-		min=b;
-	if(c<min)
-		min=c;
+	//bがminより小さいとき
+	if(nInputB < nMin) {
+		//nMinにbを代入
+		nMin = nInputB;
+	}
+	//cがnMinより小さいとき
+	if(nInputC < nMin) {
+		//nMinにcを代入
+		nMin = nInputC;
+	}
+	//最小値を表示
+	cout << "最小値は" << nMin << "です。\n";
 
-	cout <<"最小値は"<<min<<"です。\n";
+	//main関数の返却値0
+	return 0;
 }
