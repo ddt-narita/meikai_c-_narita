@@ -1,16 +1,38 @@
-#include<iostream>				//main
-using namespace std;			//list3-4をfor文を使って書き換える
-int main(){					//
-								//5月2日
-	int x;						//成田修之
+/* 演習 03-09
+ * list03-04をfor文で書き換える
+ * 作成日：5月2日
+ * 作成者：成田修之
+ * 更新日：5月10日
+ * 更新者：成田修之
+ */
 
-	cout<<"カウントダウンします。\n";
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	//キーボードからの入力に使う変数
+	int nInput;
+
+	//カウントダウンすることを明示
+	cout << "カウントダウンします。\n";
+
+	//本文を一度実行し条件に当てはまればもう一度繰り返す
 	do{
-		cout<<"正の整数値：";
-		cin>>x;
-	}while(x<=0);
+		//整数値の入力を促す表示
+		cout	<< "正の整数値：";
+		//キーボードから入力
+		cin		>> nInput;
 
-	//for文条件内の最初はここでは前置きの宣言がないので空白文字で埋める
-	for(;x>=0;x--)
-		cout<<x<<"\n";
+	//入力された値がせいでないとき繰り返す
+	} while(nInput <= 0);
+
+	//nInputの値が0より低くなるまで繰り返す
+	for( ; nInput >= 0; nInput--) {
+		//入力されたnInputの値を表示する　一文字表示に関しては追加可能なようにダブルコーテーション
+		cout << nInput << "\n";
+	}
+
+	//main関数の返却値0
+	return 0;
 }
