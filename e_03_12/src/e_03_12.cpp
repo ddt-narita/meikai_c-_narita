@@ -1,25 +1,44 @@
-#include<iostream>								//main
-using namespace std;							//1～nまでの和を式として表示
-int main (){									//
-	int n;										//5月3日（水）
-	cout <<"1からnまでの和を求めます。\n";		//成田修之
+/* 演習 03-12
+ * 1からnまでの和を式として表示
+ * 作成日：5月3日
+ * 作成者：成田修之
+ * 更新日：5月10日
+ * 更新者：成田修之
+ */
+
+#include<iostream>
+using namespace std;
+
+int main ()
+{
+
+	int nInputN;	//入力するのに使う変数
+	int nSum=0;		//合計を求めるのに使う変数
+	int i = 1;		//カウントするのに使う変数
+
+	//和を求めることの明示
+	cout << "1からnまでの和を求めます。\n";
 
 	//1～nまでの和なのでｎが正の整数になるまで繰り返す
-	do{
-	cout <<"nの値：";
-	cin>>n;
-	}while(n<=0);
+	do {
+	//値を入力するのを促す表示
+	cout	<< "nの値：";
+	//キーボードから入力
+	cin		>> nInputN;
 
-	int sum=0;
+	//正の値が入力されるまで繰り返す
+	}while(nInputN <= 0);
 
-	//iを1～n－1まではiと+を表示、nの時はiと=を表示するように繰り返す
-	for (int i =1 ;i<=n ; i++ )
-		if(i<n){
-			cout<<i<<" + "; sum+=i;
-		}
-		else{
-			cout<<i<<" = "; sum+=i;
-		}
-	cout<<sum;
+	//iを1～n－1まではiと+を表示 一文字表示に関しては追加可能なようにダブルコーテーション
+	for ( ; i < nInputN; i++) {
+		//n-1まではその値と+を表示する
+		cout << i << " + ";
+		//合計を求める変数にその時の値を加算して代入
+		nSum += i;
+	}
+	//nの時はiと=とそれまで(n-1まで)の合計にiを足したものを表示するように繰り返す
+	cout << i << " = " << nSum + i;
 
+	//main関数の返却値0
+	return 0;
 }
