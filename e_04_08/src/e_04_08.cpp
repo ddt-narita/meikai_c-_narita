@@ -1,8 +1,11 @@
-//演習０４－０８
-//intとdoubleの加法にsizeof演算子,typeid演算子を適用した値を表示とその考察
-//
-//5月4日
-//成田修之
+/* 演習 04-08
+ * intとdoubleの加法にsizeof演算子、typeid演算子を適用した値の表示とその考察
+ * 作成日：5月4日
+ * 作成者：成田修之
+ * 更新日：5月10日
+ * 更新者：成田修之
+ */
+
 #include<typeinfo>
 #include<iostream>
 using namespace std;
@@ -11,24 +14,40 @@ int main()
 {
 	//sizeof演算子とtypeid演算子の()中に入るのは式か型
 	//ここでは型同士の加法なのであらかじめ宣言しておいて使う
-	int a,b;
-	double c,d;
+	int nA,nB;
+	double dblC,dblD;
 
+	//int型とint型の加法についてやることを明示
 	cout << "int+intについて\n";
-	cout << "大きさ：" << sizeof(a + b) <<'\n';
-	cout <<"情報：" << typeid(a + b).name() <<'\n';
+	//大きさについて
+	cout << "大きさ：" << sizeof(nA + nB) <<'\n';
+	//型の情報
+	cout <<"情報：" << typeid(nA + nB).name() <<'\n';
 
+	//double型とdouble型の加法についてやることの明示
 	cout << "double+doubleについて\n";
-	cout << "大きさ：" << sizeof(c + d) << '\n';
-	cout << "情報：" << typeid(c + d).name() << '\n';
+	//大きさについて
+	cout << "大きさ：" << sizeof(dblC + dblD) << '\n';
+	//型の情報
+	cout << "情報：" << typeid(dblC + dblD).name() << '\n';
 
+	//int型とdouble型の加法についてやることを明示
 	cout << "int + doubleについて\n";
-	cout << "大きさ：" << sizeof(a + c) << '\n';
-	cout << "情報：" << typeid(a + c).name() << '\n';
+	//大きさについて
+	cout << "大きさ：" << sizeof(nA + dblC) << '\n';
+	//型の情報
+	cout << "情報：" << typeid(nA + dblC).name() << '\n';
 
+	//double型とint型の加法についてやることを明示
 	cout << "double + int について\n";
-	cout << "大きさ：" << sizeof(b + d) << '\n';
-	cout << "情報：" << typeid(b + d).name() << '\n';
+	//大きさについて
+	cout << "大きさ：" << sizeof(nB + dblD) << '\n';
+	//型の情報
+	cout << "情報：" << typeid(nB + dblD).name() << '\n';
+
+
+	//返却値
+	return 0;
 }
 /*結果は
 int+intについて
