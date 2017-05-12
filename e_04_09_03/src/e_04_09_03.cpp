@@ -1,27 +1,41 @@
-//演習０４－０９ キャスト記法
-/*読み込んだ3つの整数の合計と平均を表示する。キャスト記法、関数的記法、
-static_cast演算子を使ったものをそれぞれ作る*/
-//
-//5月4日
-//成田修之
+/* 演習 04-09-03 static_cast演算子
+ * 読み込んだ3つの整数の合計と平均を表示する。キャスト記法、関数的記法、
+ * static_cast演算子を使ったものをそれぞれ作る
+ * 作成日：5月4日
+ * 作成者：成田修之
+ * 更新日：5月10日
+ * 更新者：成田修之
+ */
+
 #include<iostream>
 using namespace std;
 int main()
 {
 	int nInputA,nInputB,nInputC =0; //入力する整数A,B,C
-	cout << "3つの整数の合計と平均を求めます\n";
-	cout << "整数A：";
-	cin >> nInputA;
-	cout << "整数B：";
-	cin >> nInputB;
-	cout << "整数C：";
-	cin >> nInputC;
+	cout 	<< "3つの整数の合計と平均を求めます\n";
+	//入力を促す
+	cout	<< "整数A：";
+	//キーボードから入力
+	cin 	>> nInputA;
+	//入力を促す
+	cout 	<< "整数B：";
+	//キーボードから入力
+	cin 	>> nInputB;
+	//入力を促す
+	cout 	<< "整数C：";
+	//キーボードから入力
+	cin 	>> nInputC;
 
 	//A～Cまでの合計
-	int nSum = nInputA + nInputB +nInputC;
+	int nSum = nInputA + nInputB + nInputC;
 	//A～Cの平均 (static_cast演算子を使ってnSumを実数に変換)
 	double dAve = static_cast<double>(nSum) / 3;
 
+	//合計を表示
 	cout << "合計は：" << nSum << '\n';
+	//平均を表示
 	cout << "平均は：" << dAve << '\n';
+
+	//main関数の返却値0
+	return 0;
 }
