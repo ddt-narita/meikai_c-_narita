@@ -1,43 +1,49 @@
-//演習０５－０５
-//異なる要素が同じ値をとらないように演習０５－０３を書き換え
-//
-//５月６日
-//成田修之
+/* 演習05-05
+ * 異なる要素が同じ値をとらないように演習０５－０３を書き換え
+ * 作成日：5月6日
+ * 作成者：成田修之
+ * 更新日：5月11日
+ * 更新者：成田修之
+ */
 #include<ctime>
 #include<cstdlib>
 #include<iostream>
 using namespace std;
 int main()
 {
+	//ランダムな値を生成する種を設定
 	srand(time(NULL));
-	const int nArrayNumber = 6;
-	int nArray[nArrayNumber];
-	int nRucky;
 
-	//生成したランダムな数がnArray[0]～nArray[i-1](i個)と違えばカウントし,それが
-	//i個あればnArray[i]にその値を代入して次へ
-	//i個未満であればもう一度生成して比較を繰り返す
+	const int nArrayNumber = 6;		//要素数
+	int nArray[nArrayNumber] = {0};		//int型の配列
+
+
+	//要素数分繰り返す
 	for(int i = 0 ; i < nArrayNumber; i++) {
-
-		//i個に以上になるまで繰り返す カウントはi=0の時にも通れるように-1で初期化
-		for(int nEqualCount = -1; nEqualCount < i; ) {
-			nRucky = rand()% 10 + 1;
-			//繰り返す際にカウントを0に戻す
-			nEqualCount = 0;
-
+		//ランダムな値を代入
+		nArray[i] = rand() % 10 + 1;
 			//nArray[0]～nArray[i-1]と比べる
-			for(int j = 0;j < i ;j++) {
-				if (nRucky != nArray[j] ){
-					nEqualCount ++;
+			for(int j = 0; j < i ;j++) {
+				//同じものがあるとき
+				if (nArray[i] == nArray[j]) {
+					//その数と同じにならないようなランダムな値を代入
+					for (;nArray[i] == nArray[j];) {
+						nArray[i] = rand() % 10 +1;
+					}
+					/*もう一度nArray[0]から比べなおす、for文の最後に
+					 *インクリメントがあるので-1に設定
+					 */
+					j = -1;
 				}
 			}
-		}
-		//カウントがi個以上ならそのランダムに生成した値を代入
-		nArray[i] = nRucky;
+
 	}
 
-	//各要素を表示
-	for(int k = 0; k < nArrayNumber; k++) {
-		cout<<"nArray[" << k << "] = " << nArray[k] <<'\n';
+	//要素数分繰り返す
+	for(int i = 0; i < nArrayNumber; i++) {
+		//各要素を表示
+		cout<<"nArray[" << i << "] = " << nArray[i] <<'\n';
 	}
+	//main関数の返却値
+	return 0;
 }
