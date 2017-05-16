@@ -18,20 +18,7 @@ using namespace std;
 
 const int a_size = 5;	//静的記憶期間を持つ変数
 
-int& r(int idx)
-{
-
-	static int nSafety;		//静的記憶期間を持つ変数
-	static int a[a_size];		//静的記憶期間を持つ配列
-
-	//idxが0以上a_size未満でない時
-	if(idx >=a_size || idx <0) {
-		return nSafety;
-	//idxが0以上a_size未満の時
-	} else {
-		return a[idx];
-	}
-}
+int& r(int idx);
 
 
 int main()
@@ -49,6 +36,23 @@ int main()
 	}
 	//main関数の返却値
 	return 0;
+}
+
+
+int& r(int idx)
+{
+
+	static int nSafety;		//静的記憶期間を持つ変数
+	static int a[a_size];		//静的記憶期間を持つ配列
+
+	//idxが0以上a_size未満でない時
+	if(idx >=a_size || idx <0) {
+		return nSafety;
+	//idxが0以上a_size未満の時
+	}
+
+	return a[idx];
+
 }
 
 /* iをa_size以上にして呼び出したところa_sizeを超える時には参照の変数に代入が
