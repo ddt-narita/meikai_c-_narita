@@ -15,18 +15,8 @@ using namespace std;
  * 作成者：成田修之
  */
 
-int min(int nInputA, int nInputB)
-{
-	//返却値をAで初期化
-	int nMin = nInputA;
-	//Bが最小値より小さいとき
-	if(nInputB < nMin) {
-		//最小値にBを代入
-		nMin =nInputB;
-	}
-	//最小値を返却する
-	return nMin;
-}
+int min(int nInputA, int nInputB);
+
 
 /* 関数min
  * 3つのint型整数の最小値
@@ -36,23 +26,8 @@ int min(int nInputA, int nInputB)
  * 作成者：成田修之
  */
 
-int min(int nInputA,int nInputB,int nInputC)
-{
-	//返却する最小値をAで初期化
-	int nMin = nInputA;
-	//Bが最小値より小さいとき
-	if(nInputB < nMin) {
-		//最小値にBを代入
-		nMin =nInputB;
-	}
-	//Cが最小値より小さいとき
-	if(nInputC < nMin) {
-		//最小値にCを代入
-		nMin = nInputC;
-	}
-	//最小値を返却
-	return nMin;
-}
+int min(int nInputA,int nInputB,int nInputC);
+
 
 int main()
 {
@@ -82,4 +57,37 @@ int main()
 
 	//main関数の返却値
 	return 0;
+}
+
+
+int min(int nInputA, int nInputB)
+{
+	//返却値をAで初期化
+	int nMin = nInputA;
+	//Bが最小値より小さいとき
+	if(nInputB < nMin) {
+		//最小値にBを代入
+		nMin =nInputB;
+	}
+	//最小値を返却する
+	return nMin;
+}
+
+
+int min(int nInputA,int nInputB,int nInputC)
+{
+	//返却する最小値をAで初期化
+	int nMin = nInputA;
+	//Bが最小値より小さいとき
+	if(nInputB < nMin) {
+		//最小値にBを代入
+		nMin =nInputB;
+	}
+	//Cが最小値より小さいとき
+	if(nInputC < nMin) {
+		//最小値にCを代入
+		nMin = nInputC;
+	}
+	//最小値を返却
+	return nMin;
 }
