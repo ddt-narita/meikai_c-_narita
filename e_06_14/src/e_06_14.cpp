@@ -15,18 +15,8 @@ using namespace std;
  * 作成者：成田修之
  */
 
-void sort(int& nSampleA, int& nSampleB)
-{
-	//AがBより大きいとき
-	if(nSampleA > nSampleB) {
-		//避難用のnTradeにAの値を代入
-		int nTrade = nSampleA;
-		//Aに小さい値が入ったBの値を代入
-		nSampleA = nSampleB;
-		//Bに大きい値が避難してあったnTradeの値を代入する
-		nSampleB = nTrade;
-	}
-}
+void sort(int& nSampleA, int& nSampleB);
+
 
 int main()
 {
@@ -54,5 +44,19 @@ int main()
 
 	//main関数の返却値
 	return 0;
-
 }
+
+
+void sort(int& nSampleA, int& nSampleB)
+{
+	//AがBより大きいとき
+	if(nSampleA > nSampleB) {
+		//避難用のnTradeにAの値を代入
+		int nTrade = nSampleA;
+		//Aに小さい値が入ったBの値を代入
+		nSampleA = nSampleB;
+		//Bに大きい値が避難してあったnTradeの値を代入する
+		nSampleB = nTrade;
+	}
+}
+
