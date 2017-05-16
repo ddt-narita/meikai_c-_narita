@@ -15,6 +15,25 @@ using namespace std;
  * 作成日：5月11日
  * 作成者：成田修之
  */
+int read_pint();
+
+int main()
+{
+	//何個表示するか入力を促す表示
+	cout << "何個＊を表示しますか\n";
+
+	//関数read_pintを呼び出し代入
+	int nInput =read_pint();
+
+	//入力された値まで繰り返す
+	for(int i =0; i < nInput; i++) {
+		//アスタリスクを表示
+		cout << "*";
+	}
+	//main関数の返却値
+	return 0;
+}
+
 int read_pint()
 {
 	int nInput;		//入力するための変数
@@ -27,20 +46,4 @@ int read_pint()
 	}
 	//関数read_pintの返却値
 	return nInput;
-}
-
-
-int main()
-{
-	//何個表示するか入力を促す表示
-	cout << "何個＊を表示しますか\n";
-
-	int c =read_pint();
-	//入力された値まで繰り返す
-	for(int i =0; i < c; i++) {
-		//アスタリスクを表示
-		cout << "*";
-	}
-	//main関数の返却値
-	return 0;
 }
