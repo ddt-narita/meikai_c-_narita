@@ -15,15 +15,7 @@ using namespace std;
  * 作成者：成田修之
  */
 
-void hello(string strHello )
-{
-
-	//Yかyが入力された時
-	if(strHello == "y" || strHello == "Y") {
-		//helloを表示
-		cout << "hello";
-	}
-}
+void hello(string strHello );
 
 
 int main()
@@ -40,4 +32,15 @@ int main()
 
 	//main関数の返却値
 	return 0;
+}
+
+
+void hello(string strHello )
+{
+
+	//Yかyが入力された時
+	if(strHello == "y" || strHello == "Y") {
+		//helloを表示
+		cout << "hello";
+	}
 }
