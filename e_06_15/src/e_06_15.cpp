@@ -15,35 +15,7 @@ using namespace std;
  * 作成者：成田修之
  */
 
-void spend (int& nHour,int& nMinute,int nMinuteAfter)
-{
-
-	//時間と分は参照する値なので足したもの初期値とした変数を宣言
-	int nMinutePlus = nMinute + nMinuteAfter;
-	int nHourCount;		//自刻の分に何分後かを足したものから何回60引けたか数えるための変数
-
-	//足したものが60未満の時
-	if(nMinutePlus < 60) {
-		//時間はそのままに分だけに何分後か入力されたものを加えて代入
-		nMinute += nMinuteAfter;
-	//60以上の時
-	} else {
-		//1時間は60分であり、分は60以上にならないので
-		//足したものが60未満になるまで繰り返す
-		for(nHourCount = 0; nMinutePlus >= 60; nHourCount++) {
-			//60引いて代入する
-			nMinutePlus -= 60;
-		}
-		//60未満になったものが更新後の分だから代入（参照する）
-		nMinute  = nMinutePlus;
-
-		//分のほうで繰り返した（繰り上がった）回数分時間を追加する
-		nHour += nHourCount;
-		//24時以上にならないように時刻は24で割った剰余とする
-		nHour %= 24;
-	}
-
-}
+void spend (int& nHour,int& nMinute,int nMinuteAfter);
 
 int main()
 {
@@ -82,4 +54,35 @@ int main()
 
 	//main関数の返却値
 	return 0;
+}
+
+
+void spend (int& nHour,int& nMinute,int nMinuteAfter)
+{
+
+	//時間と分は参照する値なので足したもの初期値とした変数を宣言
+	int nMinutePlus = nMinute + nMinuteAfter;
+
+	//足したものが60未満の時
+	if(nMinutePlus < 60) {
+		//時間はそのままに分だけに何分後か入力されたものを加えて代入
+		nMinute += nMinuteAfter;
+	//60以上の時
+	} else {
+		//1時間は60分であり、分は60以上にならないので
+		//足したものが60未満になるまで繰り返す
+		for(int i = 0; nMinutePlus >= 60; i++) {
+			//60引いて代入する
+			nMinutePlus -= 60;
+			//60分を越すたびに時間のほうをインクリメントする
+			nHour++;
+		}
+		//60未満になったものが更新後の分だから代入（参照する）
+		nMinute  = nMinutePlus;
+
+
+		//24時以上にならないように時刻は24で割った剰余とする
+		nHour %= 24;
+	}
+
 }
