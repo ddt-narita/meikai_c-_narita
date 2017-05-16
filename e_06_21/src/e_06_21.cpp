@@ -15,10 +15,8 @@ using namespace std;
  * 作成日：5月12日
  * 作成者：成田修之
  */
-short absolute(short shtInput)
-{
-	return shtInput > 0 ? shtInput : -shtInput;
-}
+short absolute(short shtInput);
+
 
 /* 関数absolute
  * int型整数の絶対値を求める関数
@@ -27,10 +25,7 @@ short absolute(short shtInput)
  * 作成日：5月12日
  * 作成者：成田修之
  */
-int absolute(int nInput)
-{
-	return nInput > 0 ? nInput : -nInput;
-}
+int absolute(int nInput);
 
 /* 関数absolute
  * long型整数の絶対値を求める関数
@@ -39,10 +34,7 @@ int absolute(int nInput)
  * 作成日：5月12日
  * 作成者：成田修之
  */
-long absolute(long LInput)
-{
-	return LInput > 0 ? LInput : -LInput;
-}
+long absolute(long LInput);
 
 /* 関数absolute
  * float型整数の絶対値を求める関数
@@ -51,10 +43,8 @@ long absolute(long LInput)
  * 作成日：5月12日
  * 作成者：成田修之
  */
-float absolute(float fInput)
-{
-	return fInput > 0 ? fInput : -fInput;
-}
+float absolute(float fInput);
+
 
 /* 関数absolute
  * double型整数の絶対値を求める関数
@@ -64,10 +54,8 @@ float absolute(float fInput)
  * 作成者：成田修之
  */
 
-double absolute(double dblInput)
-{
-	return dblInput > 0 ? dblInput : -dblInput;
-}
+double absolute(double dblInput);
+
 
 /* 関数absolute
  * long double型整数の絶対値を求める関数
@@ -76,11 +64,8 @@ double absolute(double dblInput)
  * 作成日：5月12日
  * 作成者：成田修之
  */
-long double absolute(long double LdblInput)
-{
-	//入れ替えたものを返却
-	return LdblInput > 0 ? LdblInput : -LdblInput;
-}
+long double absolute(long double LdblInput);
+
 
 
 int main()
@@ -89,7 +74,7 @@ int main()
 
 	short shtInput;
 	//short型について入力を促す表示
-	cout << "short型の絶対値を求めます、入力してください：";
+	cout << "short型の入力されたものの2倍の絶対値を求めます、入力してください：";
 	//キーボードから入力
 	cin  >> shtInput;
 	cout << "絶対値は";
@@ -99,7 +84,7 @@ int main()
 
 	int nInput;
 	//int型について入力を促す表示
-	cout << "int型の絶対値を求めます、入力してください：";
+	cout << "int型の入力されたものの3倍の絶対値を求めます、入力してください：";
 	//キーボードから入力
 	cin  >> nInput;
 	cout << "絶対値は";
@@ -109,7 +94,7 @@ int main()
 
 	long LInput;
 	//long型について入力を促す表示
-	cout << "long型の絶対値を求めます、入力してください：";
+	cout << "long型の入力されたものの4倍の絶対値を求めます、入力してください：";
 	//キーボードから入力
 	cin  >> LInput;
 	cout << "絶対値は";
@@ -119,7 +104,7 @@ int main()
 
 	float fInput;
 	//float型について入力を促す表示
-	cout << "float型の絶対値を求めます、入力してください：";
+	cout << "float型の入力されたものの5倍の絶対値を求めます、入力してください：";
 	//キーボードから入力
 	cin  >> fInput;
 	cout << "絶対値は";
@@ -129,7 +114,7 @@ int main()
 
 	double dblInput;
 	//double型について入力を促す表示
-	cout << "double型の絶対値を求めます、入力してください：";
+	cout << "double型の入力されたものの6倍の絶対値を求めます、入力してください：";
 	//キーボードから入力
 	cin  >> dblInput;
 	cout << "絶対値は";
@@ -139,7 +124,7 @@ int main()
 
 	long double LdblInput;
 	//long double型について入力を促す表示
-	cout << "long double型の絶対値を求めます、入力してください：";
+	cout << "long double型の入力されたものの7倍の絶対値を求めます、入力してください：";
 	//キーボードから入力
 	cin  >> LdblInput;
 	cout << "絶対値は";
@@ -150,4 +135,40 @@ int main()
 	//main関数の返却値
 	return 0;
 
+}
+
+short absolute(short shtInput)
+{
+	//2倍して入れ替えたものを返却
+	return shtInput > 0 ? 2* shtInput : 2 * -shtInput;
+}
+
+int absolute(int nInput)
+{
+	//3倍して入れ替えたものを返却
+	return nInput > 0 ? 3 * nInput : 3 * -nInput;
+}
+
+long absolute(long LInput)
+{
+	//4倍して入れ替えたものを返却
+	return LInput > 0 ? 4 * LInput : 4 * -LInput;
+}
+
+float absolute(float fInput)
+{
+	//5倍して入れ替えたものを返却
+	return fInput > 0 ? 5 * fInput : 5 * -fInput;
+}
+
+double absolute(double dblInput)
+{
+	//6倍して入れ替えたものを返却
+	return dblInput > 0 ? 6 * dblInput : 6 * -dblInput;
+}
+
+long double absolute(long double LdblInput)
+{
+	//7倍して入れ替えたものを返却
+	return LdblInput > 0 ? 7 * LdblInput : 7 * -LdblInput;
 }
