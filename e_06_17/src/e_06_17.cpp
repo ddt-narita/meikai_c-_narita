@@ -15,14 +15,8 @@ using namespace std;
  * 作成者：成田修之
  */
 
-void put_count()
-{
-	static int nCount;		//静的記憶域期間を持つint型の整数
-	//呼び出されたらインクリメントする
-	nCount++;
-	//呼び出されたのが何回目なのか表示
-	cout << "put_count：" << nCount << "回目\n";
-}
+void put_count();
+
 
 int main()
 {
@@ -41,4 +35,13 @@ int main()
 	//main関数の返却値
 	return 0;
 
+}
+
+void put_count()
+{
+	static int nCount;		//静的記憶域期間を持つint型の整数
+	//呼び出されたらインクリメントする
+	nCount++;
+	//呼び出されたのが何回目なのか表示
+	cout << "put_count：" << nCount << "回目\n";
 }
