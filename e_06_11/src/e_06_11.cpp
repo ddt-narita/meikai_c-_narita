@@ -16,20 +16,7 @@ using namespace std;
  * 作成日：5月11日
  * 作成者：成田修之
  */
-bool confirm_retry()
-{
-	//for文に入るために0と1以外の数で初期化
-	int nRetry = -1;
-	//0か1以外が入力される限り続ける
-	for(;nRetry != 0 && nRetry !=1;) {
-		//続けるかどうか入力を促す表示
-		cout << "もう一度？<Yes…1,No…0>：";
-		//キーボードから入力
-		cin >> nRetry;
-	}
-	//関数comfirm_retryの返却値
-	return static_cast<bool>(nRetry);
-}
+bool confirm_retry();
 
 
 int main ()
@@ -41,11 +28,11 @@ int main ()
 
 	//関数confirm_retryを呼び出し真である限り続ける
 	do {
-		int CalcX = rand() % 900 + 100;	//3桁のランダムな値X
-		int CalcY = rand() % 900 + 100;	//3桁のランダムな値Y
-		int CalcZ = rand() % 900 + 100;	//3桁のランダムな値Z
-		int nInput;							//入力するための整数
-		int nCalcPattern = rand() % 4;		//0から3の整数
+		int CalcX 			= rand() % 900 + 100;	//3桁のランダムな値X
+		int CalcY 			= rand() % 900 + 100;	//3桁のランダムな値Y
+		int CalcZ 			= rand() % 900 + 100;	//3桁のランダムな値Z
+		int nInput 			= 0;					//入力するための整数
+		int nCalcPattern 	= rand() % 4;			//0から3の整数
 
 		//0から3の生成したランダムな値によって条件分岐
 		switch(nCalcPattern) {
@@ -107,4 +94,20 @@ int main ()
 
 	//main関数の返却値
 	return 0;
+}
+
+
+bool confirm_retry()
+{
+	//for文に入るために0と1以外の数で初期化
+	int nRetry = -1;
+	//0か1以外が入力される限り続ける
+	for(;nRetry != 0 && nRetry !=1;) {
+		//続けるかどうか入力を促す表示
+		cout << "もう一度？<Yes…1,No…0>：";
+		//キーボードから入力
+		cin >> nRetry;
+	}
+	//関数comfirm_retryの返却値
+	return static_cast<bool>(nRetry);
 }
