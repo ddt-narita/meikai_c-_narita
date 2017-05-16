@@ -12,14 +12,8 @@ using namespace std;
  * 作成日：5月11日
  * 作成者：成田修之
  */
-void put_char(int nInput,char cAster)
-{
-	//入力された値が0より大きい限り繰り返す
-	while(nInput-- > 0){
-		//引数cAster（＊）を表示
-		cout << cAster;
-	}
-}
+void put_char(int nInput,char cAster);
+
 
 /* void関数put_stars
  * put_charを呼び出し文字'*'を連続で表示する
@@ -28,13 +22,8 @@ void put_char(int nInput,char cAster)
  * 作成日：5月11日
  * 作成者：成田修之
  */
+void put_stars(int nInput);
 
-void put_stars(int nInput)
-{
-	//関数put_charを引数nInputと'*'で呼び出す
-	put_char(nInput,'*');
-
-}
 
 int main()
 {
@@ -55,3 +44,20 @@ int main()
 	//main関数の返却値
 	return 0;
 }
+
+void put_char(int nInput,char cAster)
+{
+	//入力された値が0より大きい限り繰り返す
+	while(nInput-- > 0){
+		//引数cAster（＊）を表示
+		cout << cAster;
+	}
+}
+
+void put_stars(int nInput)
+{
+	//関数put_charを引数nInputと'*'で呼び出す
+	put_char(nInput,'*');
+
+}
+
