@@ -14,18 +14,8 @@ using namespace std;
  * 作成日：5月11日
  * 作成者：成田修之
  */
-int sumup(int nInput)
-{
-	int nSumup;		//1から入力された値の合計
+int sumup(int nInput);
 
-	//1から入力された値まで繰り返す
-	for(int i = 1; i <= nInput; i++) {
-		//加算して代入する
-		nSumup += i;
-	}
-	//sumup関数の返却値
-	return nSumup;
-}
 
 int main()
 {
@@ -46,4 +36,18 @@ int main()
 
 	//main関数の返却値
 	return 0;
+}
+
+
+int sumup(int nInput)
+{
+	int nSumup;		//1から入力された値の合計
+
+	//1から入力された値まで繰り返す
+	for(int i = 1; i <= nInput; i++) {
+		//加算して代入する
+		nSumup += i;
+	}
+	//sumup関数の返却値
+	return nSumup;
 }
