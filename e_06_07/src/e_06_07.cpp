@@ -15,25 +15,7 @@ using namespace std;
  * 作成者：成田修之
  */
 
-void print_season(int nMonth)
-{
-	switch(nMonth) {
-	case 3:
-	case 4:
-	case 5: cout << "それは春です。\n"; break;
-	case 6:
-	case 7:
-	case 8: cout << "それは夏です。\n"; break;
-	case 9:
-	case 10:
-	case 11: cout << "それは秋です。\n"; break;
-	case 12:
-	case 1:
-	case 2: cout << "それは冬です。\n"; break;
-	}
-}
-
-
+void print_season(int nMonth);
 
 int main()
 {
@@ -46,4 +28,32 @@ int main()
 	//入力した月の判定を行う関数を呼び出す
 	print_season(nMonth);
 
+	//main関数の返却値
+	return 0;
+}
+
+void print_season(int nMonth)
+{
+	switch(nMonth) {
+	//break文がないので下へ
+	case 3:
+	case 4:
+	//3から5は春であると表示
+	case 5: cout << "それは春です。\n"; break;
+	//break文がないので下へ
+	case 6:
+	case 7:
+	//6から8は夏であると表示
+	case 8: cout << "それは夏です。\n"; break;
+	//break文がないので下へ
+	case 9:
+	case 10:
+	//9から11は秋であると表示
+	case 11: cout << "それは秋です。\n"; break;
+	//break文がないので下へ
+	case 12:
+	case 1:
+	//12から2月は冬と表示
+	case 2: cout << "それは冬です。\n"; break;
+	}
 }
