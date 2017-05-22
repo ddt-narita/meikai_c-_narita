@@ -18,6 +18,67 @@ using namespace std;
  * 作成者：成田修之
  */
 
+int strcmp2(char* c,const char* s);
+
+
+/* 関数strncmp2
+ * strncmpと同等な関数
+ * 引数は2つのchar型へのポインタとint型変数
+ * 返却値は無し
+ * 作成日：5月17日
+ */
+
+int strncmp2(char* c,const char* s, int n);
+
+
+int main()
+{
+	//動的に生成する文字配列の要素数
+	const int Deta = 4;
+	//ランダムな値を生成する種を設定
+	srand(time(NULL));
+	//動的オブジェクトで作った可変な文字列を指すポインタを宣言
+	char* chrStr1 = new char[Deta];
+	char* chrStr2 = new char[Deta];
+
+	//比較を行うことを明示
+	cout << "strStr1とstrStr2の比較を行います。\n";
+	//終了条件の提示
+	cout << "\"XXXXX\"で終了します。\n";
+	//終了条件を満たすまで繰り返す
+	while(1) {
+
+		//入力を促す表示
+		cout << "文字列chrStr1：";
+		//キーボードから入力
+		cin  >>chrStr1;
+		//終了条件を満たしたとき繰り返しをやめる
+		if(strcmp2(chrStr1,"XXXXX") == 0) {
+			break;
+		}
+
+		//入力を促す表示
+		cout << "文字列chrStr2：";
+		//キーボードから入力
+		cin  >>chrStr2;
+		//終了条件を満たしたとき繰り返しをやめる
+		if(strcmp2(chrStr2,"XXXXX") == 0) {
+			break;
+		}
+
+		//ABCDEと入力された文字列すべてを比べた時の大小関係を表示
+		cout << "strcmp(chrStr1,chrStr2) =" 	<< strcmp2(chrStr1, chrStr2)	 	<< "\n";
+		//ABCDEと入力された文字列の3つ目までを比べた時の大小関係を表示
+		cout << "strncmp(chrStr1,chrStr2,3) =" 	<< strncmp2(chrStr1, chrStr2,3)	<< "\n";
+	}
+	delete [] chrStr1;		//chrStr1に確保してたメモリの解放
+	delete [] chrStr2;		//chrStr2に確保してたメモリの解放
+
+	//main関数の返却値
+	return 0;
+}
+
+
 int strcmp2(char* c,const char* s)
 {
 	//文字列cの長さを代入
@@ -41,12 +102,6 @@ int strcmp2(char* c,const char* s)
 	return nReturn;
 }
 
-/* 関数strncmp2
- * strncmpと同等な関数
- * 引数は2つのchar型へのポインタとint型変数
- * 返却値は無し
- * 作成日：5月17日
- */
 
 int strncmp2(char* c,const char* s, int n)
 {
@@ -68,35 +123,3 @@ int strncmp2(char* c,const char* s, int n)
 		//条件にそって返却する
 		return nReturn;
 }
-
-int main()
-{
-	//ランダムな値を生成する種を設定
-	srand(time(NULL));
-	//文字列
-	char chrStr[100];
-	//比較を行うことを明示
-	cout << "\"ABCDE\"との比較を行います。\n";
-	//終了条件の提示
-	cout << "\"XXXXX\"で終了します。";
-	//終了条件を満たすまで繰り返す
-	while(1) {
-		//入力を促す表示
-		cout << "\n文字列chrStr：";
-		//キーボードから入力
-		cin  >>chrStr;
-
-		//終了条件を満たしたとき繰り返しをやめる
-		if(strcmp2(chrStr,"XXXXX") == 0) {
-			break;
-		}
-		//
-		cout << "strcmp(\"ABCDE\",st) =" 	<< strcmp2("ABCDE",chrStr)	 	<< "\n";
-		//
-		cout << "strncmp(\"ABCDE\",st) =" 	<< strncmp2("ABCDE",chrStr,3)	<< "\n";
-	}
-
-	//main関数の返却値
-	return 0;
-}
-
