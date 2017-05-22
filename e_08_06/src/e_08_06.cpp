@@ -15,22 +15,7 @@ using namespace std;
  * 作成者：成田修之
  */
 
-int strch_cnt(const char* s, char c)
-{
-	//探す文字の数をカウントし返却する変数
-	int nCountC;
-	//ナル文字まで繰り返す
-	for(int i = 0; s[i]; i++) {
-		//探している文字と同じとき
-		if(s[i] == c) {
-			//カウントする
-			nCountC++;
-		}
-	}
-
-	//カウントしたものを返却
-	return nCountC;
-}
+int strch_cnt(const char* s, char c);
 
 
 int main()
@@ -52,4 +37,22 @@ int main()
 
 	//関数strch_cntを呼び出し探したい文字の個数を表示
 	cout << "文字" << charSearch << "は" << strch_cnt(charStr,charSearch) << "個です。";
+}
+
+
+int strch_cnt(const char* s, char c)
+{
+	//探す文字の数をカウントし返却する変数
+	int nCountC = 0;
+	//ナル文字まで繰り返す
+	for(int i = 0; s[i]; i++) {
+		//探している文字と同じとき
+		if(s[i] == c) {
+			//カウントする
+			nCountC++;
+		}
+	}
+
+	//カウントしたものを返却
+	return nCountC;
 }
