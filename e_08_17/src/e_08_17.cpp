@@ -53,5 +53,7 @@ int main()
 	//文字列Bを表示
 	cout << "文字列B：" << chrStrB << "\n";
 
+	//main関数の返却値
+	return 0;
 
 }
