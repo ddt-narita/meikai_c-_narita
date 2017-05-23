@@ -2,6 +2,8 @@
  * 文字列として表された実数をdoule型の実数に変換した値を返却する関数を作成
  * 作成日：5月17日
  * 作成者：成田修之
+ * 更新日：5月23日
+ * 更新者：成田修之
  */
 #include<iomanip>
 #include<cstring>
@@ -25,21 +27,27 @@ int tenPower(int n);
  * 返却値はint型に変換された値か、整数値を読み込めない時は0
  * 作成日：5月17日
  * 作成者：成田修之
+ * 更新日：5月23日
+ * 更新者：成田修之
  */
 double str2double(const char* s);
 
 
 int main()
 {
-	char chrStr[100];
-	//入力を促す表示
-	cout << "文字列を入力してください";
-	cin  >> chrStr;
+	char* chrStr = new char[50];	//入力するために確保したメモリを指すポインタを宣言
 
 	//これからやることを表示
 	cout << "文字列が実数のみならその数値の2倍を表示します。実数以外があるときは0を表示します。\n";
+	//入力を促す表示
+	cout << "文字列を入力してください";
+	//キーボードから入力
+	cin  >> chrStr;
+
 	//関数str2doubleを呼び出して文字列の数字の2倍を表示
-	cout << 2 * str2double(chrStr);
+	cout << fixed << setprecision(6) << 2 * str2double(chrStr);
+
+	delete[] chrStr;
 
 	//main関数の返却値
 	return 0;
@@ -63,13 +71,13 @@ double str2double(const char* s)
 {
 	int length = strlen(s);	//文字列sの長さを求めて代入
 	double dblReturn = 0;		//返却に使う変数
-	int nPoint = 0;					//小数点の位置を記憶しておくための変数
+	int nPoint = 0;				//小数点の位置を記憶しておくための変数
 
 
 	//ナル文字まで繰り返す
 	for(int i = 0; s[i]; i++) {
-		//数字文字ではない時
-		if(isdigit(s[i]) == 0) {
+		//マイナス以外で数字文字ではない時
+		if(isdigit(s[i]) == 0 && s[i] != '-') {
 			//小数点の時
 			if(s[i] == '.') {
 				//小数点の分で10割る
@@ -111,6 +119,13 @@ double str2double(const char* s)
 			case '0': break;
 			}
 		}
+	}
+	//文字列の先頭がマイナスの時
+	if(s[0] == '-'){
+		//-に変換して-も長さ1を使っているのでその分の10で割る
+		dblReturn /= -1;
+
+
 	}
 	//記憶させておいた小数点位置分の10のべき乗で割って代入
 	dblReturn /= tenPower(nPoint);
