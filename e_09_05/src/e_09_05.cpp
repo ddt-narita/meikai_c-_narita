@@ -93,11 +93,14 @@ int main()
 			//キーボードから入力
 			cin  >> chrArray[i];
 		}
+	//関数minofを呼ぶためのポインタによる文字列の配列
 	const char* chrPoint[nArrayNumber];
-
+	//要素数分繰り返す
 	for(int i = 0; i< nArrayNumber; i++) {
+		//各要素の文字列を代入
 		chrPoint[i] = chrArray[i];
 	}
+
 
 	//関数minofを呼びだし入力された最小の要素を表示
 	cout << "最小の文字列は\"" << minof<const char*>(chrPoint,nArrayNumber) << "\"です\n";
