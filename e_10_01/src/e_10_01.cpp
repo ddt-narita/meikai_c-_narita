@@ -14,8 +14,8 @@ int main ()
 {
 	string fullname;	//名前の入力に使う
 	int year;			//年齢の入力に使う
-	int height;			//身長の入力に使う
-	int weight;			//体重の入力に使う
+	double height;			//身長の入力に使う
+	double weight;			//体重の入力に使う
 	double vision;		//視力の入力に使う
 
 	//データの入力を促す
@@ -42,9 +42,11 @@ int main ()
 	cin  >> vision;
 
 	//コンストラクタを呼び出してオブジェクトYourDetaを定義
-	Person YourDeta (fullname,year,height,weight,vision);
+	Person YourData (fullname,year,height,weight,vision);
 	//メンバ関数print_specを呼び出して情報を表示
-	YourDeta.print_spec();
+	YourData.print_spec();
+	//メンバ関数print_BMIを呼び出してBMIを求めて表示
+	YourData.print_BMI();
 
 	//main関数の返却値
 	return 0;
