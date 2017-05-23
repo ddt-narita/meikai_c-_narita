@@ -11,7 +11,7 @@ int main()
 	//配列による3つの文字列が入った2次配列
 	char a[][5]	 = {"LISP","C","Ada"};
 	//ポインタによる3つの文字列の入った配列
-	char *p[]	 = {"PAUL","X","MAC"};
+	const char *p[]	 = {"PAUL","X","MAC"};
 
 	int sizeA = sizeof(a) / sizeof(a[0]);		//繰り返しに使う列数を計算する
 	int sizeP = sizeof(p) / sizeof(p[0]);		//繰り返しに使う列数を計算する
