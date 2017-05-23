@@ -2,6 +2,8 @@
  * 自動車クラスCarにデータメンバやメンバ関数を自由に追加する
  * 作成日：5月19日
  * 作成者：成田修之
+ * 更新日：5月23日
+ * 更新者：成田修之
  */
 
 #include<iostream>
@@ -13,13 +15,13 @@ using namespace std;
 int main ()
 {
 	string strName;		//名前を入力するのに使う
-	int nWidth;			//車幅を入力するのに使う
-	int nLength;		//車長を入力するのに使う
-	int nHeight;		//車高を入力するのに使う
-	double dblGas;		//現在のガソリン量を入力するのに使う
-	string strNumber;	//車のナンバーを入力するのに使う
-	double dblEco;		//燃費を入力するのに使う
-	double dblCapa;	//ガソリンの容量を入力するのに使う
+	int nWidth = 0;			//車幅を入力するのに使う
+	int nLength = 0;		//車長を入力するのに使う
+	int nHeight = 0;		//車高を入力するのに使う
+	double dblGas = 0;		//現在のガソリン量を入力するのに使う
+	int nNumber = 0000;	//車のナンバーを入力するのに使う
+	double dblEco = 1;		//燃費を入力するのに使う
+	double dblCapa = 50;	//ガソリンの容量を入力するのに使う
 
 	//データの入力を促す
 	cout << "車のデータを入力してください。\n";
@@ -39,14 +41,12 @@ int main ()
 	cout << "車高：";
 	//キーボードから入力
 	cin  >> nHeight;
-	//現在のガソリン量の入力を促す
-	cout << "現在ガソリン量：";
-	//キーボードから入力
-	cin  >> dblGas;
+
 	//車のナンバーの入力を促す
 	cout << "車のナンバー：";
 	//キーボードから入力
-	cin  >> strNumber;
+	cin  >> nNumber;
+
 	//燃費の入力を促す
 	cout << "燃費：";
 	//キーボードから入力
@@ -55,9 +55,25 @@ int main ()
 	cout << "ガソリンの最大容量：";
 	//キーボードから入力
 	cin  >> dblCapa;
-
+	while(true) {
+		//現在のガソリン量の入力を促す
+		cout << "現在ガソリン量：";
+		//キーボードから入力
+		cin  >> dblGas;
+		//現在のガソリン量が容量より多いとき
+		if(dblGas > dblCapa){
+			//多すぎることを表示
+			cout << "多すぎます";
+			//リセットする
+			dblGas = 0;
+		//容量より少ないとき
+		}else{
+			//ループを抜ける
+			break;
+		}
+	}
 	//コンストラクタを呼び出してオブジェクトMyCarを定義
-	Car MyCar(strName,nWidth,nLength,nHeight,dblGas,strNumber,dblEco,dblCapa);
+	Car MyCar(strName,nWidth,nLength,nHeight,dblGas,nNumber,dblEco,dblCapa);
 
 	//MyCarのスペックを表示
 	MyCar.print_spec();
@@ -112,8 +128,6 @@ int main ()
 			cout << "\a燃料が足りません！\n";
 		}
 	}
-
 	//main関数の返却値
 	return 0;
-
 }
