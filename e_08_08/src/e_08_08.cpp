@@ -15,14 +15,8 @@ using namespace std;
  * 作成者；成田修之
  */
 
-void put_rev(const char* s)
-{
-	//ナル文字を含めない文字の数を求めてその番号から降りていくように表示
-	for(int i =strlen(s); i >= 0; i--) {
-		//逆順に表示
-		cout << s[i];
-	}
-}
+void put_rev(const char* s);
+
 
 int main()
 {
@@ -41,4 +35,14 @@ int main()
 
 	//main関数の返却値
 	return 0;
+}
+
+
+void put_rev(const char* s)
+{
+	//ナル文字を含めない文字の数を求めてその番号から降りていくように表示
+	for(int i =strlen(s); i >= 0; i--) {
+		//逆順に表示
+		cout << s[i];
+	}
 }
