@@ -15,23 +15,8 @@ using namespace std;
  * 作成者；成田修之
  */
 
-const char*str_match(char* s1,char* s2)
-{
-	//文字列Bの長さを代入
-	int length = strlen(s2);
-	//返却するポインタをナルで初期化
-	char* ptr = 0;
-	//文字列Aがナル文字になるまで繰り返す
-	for(int i =0; s1[i]; i++){
-		//文字列Aについて1つずらしながらstrncmp関数を使って文字列Bと比べて同値の時
-		if(strncmp(&s1[i],s2,length) == 0) {
-			//返却するポインタにその時の先頭のポインタを代入
-			ptr = &s1[i];
-		}
-	}
-	//返却する
-	return ptr;
-}
+const char*str_match(char* s1,char* s2);
+
 
 int main ()
 {
@@ -55,4 +40,23 @@ int main ()
 
 	//main関数の返却値
 	return 0;
+}
+
+
+const char*str_match(char* s1,char* s2)
+{
+	//文字列Bの長さを代入
+	int length = strlen(s2);
+	//返却するポインタをナルで初期化
+	char* ptr = 0;
+	//文字列Aがナル文字になるまで繰り返す
+	for(int i =0; s1[i]; i++){
+		//文字列Aについて1つずらしながらstrncmp関数を使って文字列Bと比べて同値の時
+		if(strncmp(&s1[i],s2,length) == 0) {
+			//返却するポインタにその時の先頭のポインタを代入
+			ptr = &s1[i];
+		}
+	}
+	//返却する
+	return ptr;
 }
