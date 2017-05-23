@@ -15,15 +15,8 @@ using namespace std;
  * 作成者：成田修之
  */
 
-void put_lower(const char s[])
-{
-	//ナル文字到達するまで繰り返す
-	for(int i = 0; s[i]; i++) {
-		//大文字は小文字に変換して表示
-		cout <<static_cast<char>(tolower(s[i]));
-	}
+void put_lower(const char s[]);
 
-}
 
 int main()
 {
@@ -42,4 +35,14 @@ int main()
 
 	//main関数の返却値
 	return 0;
+}
+
+void put_lower(const char s[])
+{
+	//ナル文字到達するまで繰り返す
+	for(int i = 0; s[i]; i++) {
+		//大文字は小文字に変換して表示
+		cout <<static_cast<char>(tolower(s[i]));
+	}
+
 }
