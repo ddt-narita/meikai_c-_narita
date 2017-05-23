@@ -2,6 +2,8 @@
  * strcmp関数,strncmp関数と同等の関数の作成
  * 作成日：5月17日
  * 作成者：成田修之
+ * 更新日：5月23日
+ * 更新者：成田修之
  */
 #include<ctime>
 #include<cstdlib>
