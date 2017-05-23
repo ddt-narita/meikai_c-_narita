@@ -49,14 +49,14 @@ int main()
 }
 
 
-int strchr_idx(const char* c,char s)
+int strchr_idx(const char* s,char c)
 {
 	//返却に使う変数、一緒のものがなかった時そのまま返すため-1で初期化
 	int nSub = -1;
 	//ナル文字まで続ける
-	for(int i= 0; c[i]; i++) {
+	for(int i= 0; s[i]; i++) {
 		//探したい文字と出会ったとき
-		if(c[i] == s) {
+		if(s[i] == c) {
 			//返却する変数に代入
 			nSub = i+1;
 			//先頭が知りたいだけなので繰り返しを抜ける
