@@ -51,8 +51,9 @@ void count_digits(const char* chrStr,int c[])
 
 int main()
 {
+	const int Deta = 100;
 	//文字列の配列
-	char chrStr[24] = {0};
+	char* chrStr = new char[Deta];
 	//各数字の個数を代入するための配列
 	int nArray[10] = {0};
 
@@ -71,6 +72,8 @@ int main()
 		//各数字の個数を表示する
 		cout << "数字" << i << "は" << nArray[i] << "個です。\n";
 	}
+
+	delete [] chrStr;
 
 	//main関数の返却値
 	return 0;
