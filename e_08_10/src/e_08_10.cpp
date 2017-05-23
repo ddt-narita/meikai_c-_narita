@@ -32,9 +32,9 @@ void strncat2(char* c,const char*s,int n);
 
 int main()
 {
-
-	char chrStrA[35] = {0};	//文字列の入力に使う
-	char chrStrB[35] = {0};	//文字列Aに連結する文字列B
+	const int Deta = 100;
+	char* chrStrA = new char[Deta];	//文字列の入力に使う
+	char* chrStrB = new char[Deta];	//文字列Aに連結する文字列B
 	int nInput = 0;			//どこまで連結するか入力するため変数
 
 	//文字列Aに入力を促す
@@ -59,6 +59,9 @@ int main()
 	//連結した文字列を表示
 	cout << "連結した文字列を表示します。：" << chrStrB;
 
+	delete[]chrStrA;		//文字列Aで確保していたメモリの解放
+	delete[]chrStrB;		//文字列Bで確保していたメモリの解放
+
 	//main関数の返却値
 	return 0;
 }
@@ -81,7 +84,7 @@ void strncat2(char* c,const char*s,int n)
 	//連結されるほうの文字列の長さを代入
 	int length = strlen(c);
 	//入力されたnの値まで繰り返す
-	for(int i = 0; i < n; i++) {
+	for(int i = 0; i < n && s[i] != 0; i++) {
 		//終端から順に代入していく
 		c[i+length] = s[i];
 	}
