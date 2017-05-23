@@ -2,6 +2,8 @@
  * 文字列として表された整数値を、int型の整数値に変換した値を返す関数の作成
  * 作成日：5月17日
  * 作成者：成田修之
+ * 更新日：5月23日
+ * 更新者：成田修之
  */
 #include<cstring>
 #include<iostream>
@@ -24,6 +26,8 @@ int tenPower(int n);
  * 返却値はint型に変換された値か、整数値を読み込めない時は0
  * 作成日：5月17日
  * 作成者：成田修之
+ * 更新日：5月23日
+ * 更新者：成田修之
  */
 
 int str2int(const char* s);
@@ -32,17 +36,19 @@ int str2int(const char* s);
 int main()
 {
 	//文字列を入力するための配列
-	char chrStr[100];
-
-	//入力を促す表示
-	cout << "文字列を入力してください";
-	//キーボードから入力
-	cin  >> chrStr;
+	char* chrStr = new char[50];
 
 	//これからやることを表示
 	cout << "文字列が数字のみならその数値の2倍を表示します。数字以外があるときは0を表示します。\n";
+	//文字列の入力
+	cout << "文字列を入力してください：";
+	//キーボードから入力
+	cin  >> chrStr;
+
 	//関数str2intを呼び出して文字列の数字の2倍を表示
 	cout << 2 * str2int(chrStr);
+
+	delete []chrStr;
 
 	//main関数の返却値
 	return 0;
@@ -70,12 +76,13 @@ int str2int(const char* s)
 
 	//ナル文字まで繰り返す
 	for(int i = 0; s[i]; i++) {
-		//数字文字ではない時
-		if(isdigit(s[i]) == 0){
+		//マイナス以外で数字文字ではない時
+		if(isdigit(s[i]) == 0 && s[i] != '-'){
 			//返却値を0にリセットする
 			nReturn = 0;
 			//for分を抜けて0を返却
 			break;
+
 		//数字文字の時
 		} else {
 			//その数字文字によって分岐
@@ -103,6 +110,11 @@ int str2int(const char* s)
 			case '0': break;
 			}
 		}
+	}
+	//先頭が-の時
+	if(s[0] == '-') {
+		//マイナスに変換する
+		nReturn /= -1;
 	}
 	//上で求めた返却値
 	return nReturn;
