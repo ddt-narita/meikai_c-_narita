@@ -2,8 +2,10 @@
  * 2つの整数値xとyの最大公約数をユークリッドの互除法を用いて求める関数
  * 作成日：5月18日
  * 作成者：成田修之
+ * 更新日：5月22日
+ * 更新者：成田修之
  */
-
+#include<climits>
 #include<iostream>
 using namespace std;
 
@@ -13,44 +15,35 @@ using namespace std;
  * 返却値は2つの整数の最大公約数
  * 作成日：5月18日
  * 作成者：成田修之
+ * 更新日：5月22日
+ * 更新者：成田修之
  */
 
 int gcd(int x,int y)
 {
-	//返却する最大公約数を代入するため
-	int nDivisor;
-
-	if(x != 0 && y != 0){
-		//xがyより大きいとき
-		if(x > y){
-			//xをyで割った剰余を代入
-			x = x % y;
-			//関数gcdを再帰呼び出し
-			gcd(x,y);
-
-		//yのほうが大きいとき
-		} else if(x < y) {
-			//yをxで割った剰余を代入
-			y = y % x;
-			//関数gcdを再帰呼び出し
-			gcd(x,y);
-		}
-	}else {
-		nDivisor = x > y ? x : y;
+	//xがyで割り切れるとき
+	if(x%y == 0) {
+		//yを返却
+		return y;
+	//割り切れない時
+	} else {
+		//yとxをｙで割った剰余を実引数として再起呼び出し
+		return(gcd(y,x%y));
 	}
 
-
-
-	//最大公約数を返却
-	return nDivisor;
 }
 
 int main()
 {
-	int nInputX =88;	//公約数を求めたい値を入力するため
-	int nInputY = 40;	//公約数を求めたい値を入力するため
+	int nInputX ;	//公約数を求めたい値を入力するため
+	int nInputY ;	//公約数を求めたい値を入力するため
 
-
+	//公約数を求めることを明示
+	cout << "2つの整数の最大公約数を求めます。\n";
+	cout << "整数A：";		//公約数を求めたい整数Aの入力を促す
+	cin >> nInputX;			//キーボードから入力
+	cout << "整数B：";		//公約数を求めたい整数Bの入力を促す
+	cin >> nInputY;			//キーボードから入力
 
 	//関数gcdを呼び出して公約数を求める
 	cout << "二つの入力された値の最大公約数は" << gcd(nInputX,nInputY) << "です。\n";
