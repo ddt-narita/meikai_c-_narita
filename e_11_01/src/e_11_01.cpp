@@ -11,44 +11,49 @@ using namespace std;
 
 int main()
 {
-	int nDay;		//誕生日の入力に使う変数
-	int nMonth;		//誕生日の入力に使う変数
-	int nYear;		//誕生日の入力に使う変数
+	int nHour;		//時間の入力に使う変数
+	int nMinute;	//分の入力に使う変数
+	int nSecond;	//秒の入力に使う変数
 
-	//誕生日の入力を促す
-	cout << "誕生日を入力してください：\n";
-	//生まれ年
-	cout << "年：";
-	//キーボードから入力
-	cin  >> nYear;
-	//生まれ月
-	cout << "月：";
-	//キーボードから入力
-	cin  >> nMonth;
-	//生まれ日
-	cout << "日";
-	//キーボードから入力
-	cin  >> nDay;
+	//現在時刻の入力を促す
+	cout << "現在時刻を入力してください：\n";
+	do {
+		//現在の時間
+		cout << "時：";
+		//キーボードから入力
+		cin  >> nHour;
+	} while(nHour < 0 || 24 < nHour);
+
+	do {
+		//現在の分
+		cout << "分：";
+		//キーボードから入力
+		cin  >> nMinute;
+	}while(nMinute < 0 || 60 < nMinute);
+
+	do{
+		//現在の秒
+		cout << "秒：";
+		//キーボードから入力
+		cin  >> nSecond;
+	}while(nSecond < 0 || 60 < nSecond);
 
 	//コンストラクタを読んでデータメンバを初期化
-	Date birthday(nYear,nMonth,nDay);
+	Times now(nHour,nMinute,nSecond);
 
 	//誕生日を確認する
-	cout << "誕生日は" << birthday.year() << "年" << birthday.month();
-	cout << "月 " << birthday.day() <<"日ですね？\n";
+	cout << "現在時刻は" << now.hour() << "時" << now.minute();
+	cout << "分" << now.second() <<"秒ですね？\n";
 
 	//何歳かを入力するのに使う変数
 	int nOld;
 	//今年で何歳になるかを入力
-	cout << "今年で何歳になりますか：";
+	cout << "何時間後を表示しますか：";
 	//キーボードから入力
 	cin  >> nOld;
 
-	//生まれた月に加算する
-	birthday.year_spend(nOld);
-
 	//今年が何年か表示
-	cout << "今年は" << birthday.year() << "年ですね？";
+	cout << nOld <<"時間後は" << now.after_hour(nOld) << "時です";
 
 	//main関数の返却値
 	return 0;
