@@ -6,112 +6,111 @@
 #include<iostream>
 #include<sstream>
 
-class Date
-{
 
-	int Year;		//年のデータメンバ
-	int Month;		//月のデータメンバ
-	int Day;		//日のデータメンバ
+class Times
+{
+	int Hour;		//時間のデータメンバ
+	int Minute;		//分のデータメンバ
+	int Second;		//秒のデータメンバ
+
 public:
 
 	//デフォルトインストラクタ
-	Date();
+	Times();
 	//コンストラクタを設定
-	Date(int yy, int mm, int dd) {
-		Year=yy;
-		Month=mm;
-		Day=dd;
+	Times(int h, int m, int s) {
+		Hour = h;
+		Minute = m;
+		Second = s;
 	}
 
-	int year() const
-	{
-		//年のデータメンバを返却
-		return Year;
+	int hour() const{
+		//時間のデータメンバを返却
+		return Hour;
 	}
 
-	int month() const
-	{
-		//月のデータメンバを返却
-		return Month;
+	int minute() const{
+		//分のデータメンバを返却
+		return Minute;
 	}
 
-	int day() const
-	{
-		//日のデータメンバを返却
-		return Day;
+	int second() const{
+		//秒のデータメンバを返却
+		return Second;
 	}
 
-	void year_spend(int year_plus)
-	{
-		//引数分、年のデータメンバに加算する
-		Year += year_plus;
+	void hour_spend(int hour_plus) {
+		//引数分、時間のデータメンバに加算する
+		Hour += hour_plus;
 	}
 
-	void month_spend(int month_plus)
-	{
-		//引数分、月のデータメンバに加算する
-		Month += month_plus;
+	void minute_spend(int minute_plus) {
+		//引数分、分のデータメンバに加算する
+		Minute += minute_plus;
 	}
 
-	void day_spend(int day_plus)
-	{
-		//引数分、日のデータメンバに加算する
-		Day += day_plus;
-	}
-	//誕生日と年齢から今年の年数を求めるメンバ関数
-	int this_year (int y){
-		//誕生日に年齢を足して返却
-		return Year + y;
+	void second_spend(int second_plus) {
+		//引数分、秒のデータメンバに加算する
+		Second += second_plus;
 	}
 
-	//年に関するセッター
-	void year_set(int y)
+	//時間に関するセッター
+	void hour_set(int h)
 	{
-		//誕生日にセットする
-		Year = y;
+		//時間にセットする
+		Hour = h;
 	}
-	//月に関するセッター
-	void month_set(int m)
+	//分に関するセッター
+	void minute_set(int m)
 	{
 		//誕生月にセットする
-		Month = m;
+		Minute = m;
 	}
 	//日に関するセッター
-	void day_set(int d)
+	void second_set(int s)
 	{
 		//誕生日にセットする
-		Day = d;
+		Second = s;
 	}
+
 };
+
 //挿入子の多重定義
-std::ostream& operator<< (std::ostream& s, const Date& x)
+std::ostream& operator<< (std::ostream& s, const Times& x)
 {
-	//データメンバを返却するメンバ関数を呼び出して表示
-	return s << x.year() << "年" << x.month() << "月" << x.day() << "日";
+	return s << x.hour() << "時" << x.minute() << "分" << x.second() << "秒";
 }
 
 //抽出子の多重定義
-std::istream& operator>> (std::istream& s, Date& x)
+std::istream& operator>> (std::istream& s, Times& x)
  {
-	int y;		//年に入力しセットするための変数
-	int m;		//月に入力しセットするための変数
-	int d;		//日に入力しセットするための変数
-	//年に入力を促す
-	std::cout << "年：";
-	//キーボードから入力
-	s >> y;
-	//月に入力を促す
-	std::cout << "月：";
-	//キーボードから入力
-	s >> m;
-	//日に入力を促す
-	std::cout << "日：";
-	//キーボードから入力
-	s >> d;
+	int hour;		//時に入力しセットするための変数
+	int min;		//分に入力しセットするための変数
+	int sec;		//秒に入力しセットするための変数
+	do {
+		//時に入力を促す
+		std::cout << "時：";
+		//キーボードから入力
+		s >> hour;
+	}while(hour < 0 || 24 < hour);
 
-	x.year_set(y);		//セッターのメンバ関数を呼び出して年を設定する
-	x.month_set(m);		//セッターのメンバ関数を呼び出して月を設定する
-	x.day_set(d);		//セッターのメンバ関数を呼び出して日を設定する
+	do{
+		//分に入力を促す
+		std::cout << "分：";
+		//キーボードから入力
+		s >> min;
+	}while(min < 0 || 60 < min);
+
+	do{
+		//秒に入力を促す
+		std::cout << "秒：";
+		//キーボードから入力
+		s >> sec;
+	}while(sec < 0 || 60 < sec);
+
+	x.hour_set(hour);		//セッターのメンバ関数を呼び出して時を設定する
+	x.minute_set(min);		//セッターのメンバ関数を呼び出して分を設定する
+	x.second_set(sec);		//セッターのメンバ関数を呼び出して秒を設定する
 
 	return s;			//入力ストリームsを返却
  }

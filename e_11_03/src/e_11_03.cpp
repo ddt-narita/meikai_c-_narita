@@ -1,40 +1,43 @@
 /* 演習11-03
- * 演習11-01の自国クラスに挿入子と抽出子を追加
+ * 演習11-01の時刻クラスに挿入子と抽出子を追加
  * 作成日：5月21日
  * 作成者：成田修之
  */
 #include<iostream>
 #include"e_11_03.h"
+#include<sstream>
 using namespace std;
 
 //デフォルトコンストラクタ
-Date::Date()
+Times::Times()
 {
-		Year = 1;		//引数を受け取らない時は年を1で初期化
-		Month = 1;		//引数を受け取らない時は月を1で初期化
-		Day = 1;		//引数を受け取らない時は日を1で初期化
+		Hour = 1;		//引数を受け取らない時は年を1で初期化
+		Minute = 1;		//引数を受け取らない時は月を1で初期化
+		Second = 1;		//引数を受け取らない時は日を1で初期化
 }
 
 int main()
 {
-	Date birthday;
+	Times now;		//現在時刻を入力するオブジェクトの作成
 
 	//誕生日の入力を促す
-	cout << "誕生日を入力してください：\n";
-	cin >> birthday;
+	cout << "現在時刻を入力してください：\n";
+	cin >> now;
 
 	//誕生日を確認する
-	cout << "誕生日は" << birthday << "日ですね？\n";
+	cout << "現在時刻は" << now << "ですね？\n";
 
 	//何歳かを入力するのに使う変数
-	int nOld;
+	int nAfter;
 	//今年で何歳になるかを入力
-	cout << "今年で何歳になりますか：";
+	cout << "何時間後を表示しますか：";
 	//キーボードから入力
-	cin  >> nOld;
+	cin  >> nAfter;
 
+	//メンバ関数を呼び出して入力された時間後に設定
+	now.hour_spend(nAfter);
 	//今年が何年か表示
-	cout << "今年は" << birthday.this_year(nOld) << "年ですね？";
+	cout << nAfter << "時間後は" << now.hour() % 24 << "時です";
 
 	//main関数の返却値
 	return 0;
