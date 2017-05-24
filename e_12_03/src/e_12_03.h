@@ -1,4 +1,4 @@
-/* 演習12-03
+/* 演習12-03　ヘッダ部
  * 演習11-03で作成した時刻クラスに各種演算子関数を追加
  * 作成日：5月23日
  * 作成者：成田修之
@@ -7,165 +7,119 @@
 #include<iostream>
 #include<sstream>
 
-class Date
+class Times
 {
+	int Hour;		//時間のデータメンバ
+	int Minute;		//分のデータメンバ
+	int Second;		//秒のデータメンバ
 
-	int Year;		//年のデータメンバ
-	int Month;		//月のデータメンバ
-	int Day;		//日のデータメンバ
 public:
 
 	//デフォルトインストラクタ
-	Date();
+	Times();
 	//コンストラクタを設定
-	Date(int yy, int mm, int dd) {
-		Year=yy;
-		Month=mm;
-		Day=dd;
+	Times(int h, int m, int s) {
+		Hour = h;
+		Minute = m;
+		Second = s;
 	}
 
-	int year() const
-	{
-		//年のデータメンバを返却
-		return Year;
+	int hour() const{
+		//時間のデータメンバを返却
+		return Hour;
 	}
 
-	int month() const
-	{
-		//月のデータメンバを返却
-		return Month;
+	int minute() const{
+		//分のデータメンバを返却
+		return Minute;
 	}
 
-	int day() const
-	{
-		//日のデータメンバを返却
-		return Day;
+	int second() const{
+		//秒のデータメンバを返却
+		return Second;
 	}
 
-	void year_spend(int year_plus)
-	{
-		//引数分、年のデータメンバに加算する
-		Year += year_plus;
+	void hour_spend(int hour_plus) {
+		//引数分、時間のデータメンバに加算する
+		Hour += hour_plus;
 	}
 
-	void month_spend(int month_plus)
-	{
-		//引数分、月のデータメンバに加算する
-		Month += month_plus;
+	void minute_spend(int minute_plus) {
+		//引数分、分のデータメンバに加算する
+		Minute += minute_plus;
 	}
 
-	void day_spend(int day_plus)
-	{
-		//引数分、日のデータメンバに加算する
-		Day += day_plus;
-	}
-	//誕生日と年齢から今年の年数を求めるメンバ関数
-	int this_year (int y){
-		//誕生日に年齢を足して返却
-		return Year + y;
+	void second_spend(int second_plus) {
+		//引数分、秒のデータメンバに加算する
+		Second += second_plus;
 	}
 
-	//年に関するセッター
-	void year_set(int y)
+	//時間に関するセッター
+	void hour_set(int h)
 	{
-		//誕生日にセットする
-		Year = y;
+		//時間にセットする
+		Hour = h;
 	}
-	//月に関するセッター
-	void month_set(int m)
+	//分に関するセッター
+	void minute_set(int m)
 	{
 		//誕生月にセットする
-		Month = m;
+		Minute = m;
 	}
 	//日に関するセッター
-	void day_set(int d)
+	void second_set(int s)
 	{
 		//誕生日にセットする
-		Day = d;
+		Second = s;
 	}
 
-	friend bool operator== (const Date& x,const Date& y) {
-		return x.Year == y.Year && x.Month == y.Month && x.Day == y.Day;
+	//等価演算子==の演算子関数
+	friend bool operator==(const Times& x, const Times& y) {
+		return x.Hour == y.Hour && x.Minute == y.Minute && x.Second == y.Second;
 	}
 
-	friend bool operator!= (const Date& x,const Date& y) {
+	//等価演算子!=の演算子関数
+	friend bool operator!=(const Times& x, const Times& y) {
 		return !(x == y);
 	}
 
-	friend Date operator+ (const Date& x,const Date& y) {
-		return Date(x.Year + y.Year , x.Month + y.Month , x.Day + y.Day);
-	}
+	//2項加算演算子＋の演算子関数
+	friend Times operator+ (const Times& x, const Times& y) {
+			int h = x.Hour + y.Hour;		//2つの時間を合わせたもので初期化
+			int m = x.Minute + y.Minute;	//2つの分を合わせたもので初期化
+			int s = x.Second + y.Second;	//2つの秒を合わせたもので初期化
 
-	friend Date operator- (const Date& x,const Date& y) {
-		//各月の最大日
-		int dmax[] ={31,28,31,30,31,30,31,31,30,31,30,31};
-		int year 	= x.Year - y.Year;		//引数のオブジェクトの年のデータの差
-		int month 	= x.Month - y.Month;	//引数のオブジェクトの月のデータの差
-		int day 	= x.Day - y.Day;		//引数のオブジェクトの日のデータの差
-
-		//日の差が0以上の時
-		if(day >= 0) {
-			//月の差が0より小さいとき
-			if(month < 0) {
-				//一年減らして
-				year--;
-				//12か月分繰り下げて足す
-				month += 12;
-			}
-		//日の差が0より小さいとき
-		} else {
-			//月の差が0より大きいとき
-			if(month > 0) {
-				//月を一つ減らして
-				month--;
-				//その月の最大の日にちを足す
-				day += dmax[month - 1];
-			//月の差が0以下の時
+			//秒が60を超えるとき
+			if(s >= 60) {
+				//分を1増やしてそれが60を超えるとき
+				if(++m >= 60){
+					h++;		//時を1加算して
+					h %= 24;	//24の剰余を代入
+					m -= 60;	//60以上になっているので60で引く
+					s -= 60;	//60以上になっているので60で引く
+				}else{
+					//分は60を超えない時
+					h %= 24;	//時間を24の剰余で代入
+					s -= 60;	//60以上になっているので60で引く
+				}
+			//秒が60を超えていない時
 			} else {
-				//一年繰り下げて
-				year--;
-				//12か月分足し
-				month+=12;
-				//その月の最大日を足す
-				day += dmax[month - 1];
+				//分が60を超えるとき
+				if(m >= 60){
+					m -= 60;	//60以上なので60引く
+					h++;		//時間を1増やす
+					h %= 24;	//時間を24の剰余で代入
+				}
 			}
+			//秒も時間も60を超えない時は時間を24の剰余で代入
+			h %= 24;
+			//加算された時刻のオブジェクトを作って返却
+			return Times(h,m,s);
 		}
 
-		//計算し終わった日付を返却
-		return Date(year, month, day);
-	}
-
-
 };
-//挿入子の多重定義
-std::ostream& operator<< (std::ostream& s, const Date& x)
-{
-	//データメンバを返却するメンバ関数を呼び出して表示
-	return s << x.year() << "年" << x.month() << "月" << x.day() << "日";
-}
+//挿入子の多重定義の宣言
+std::ostream& operator<< (std::ostream& s, const Times& x);
 
-//抽出子の多重定義
-std::istream& operator>> (std::istream& s, Date& x)
- {
-	int y;		//年に入力しセットするための変数
-	int m;		//月に入力しセットするための変数
-	int d;		//日に入力しセットするための変数
-	//年に入力を促す
-	std::cout << "年：";
-	//キーボードから入力
-	s >> y;
-	//月に入力を促す
-	std::cout << "月：";
-	//キーボードから入力
-	s >> m;
-	//日に入力を促す
-	std::cout << "日：";
-	//キーボードから入力
-	s >> d;
-
-	x.year_set(y);		//セッターのメンバ関数を呼び出して年を設定する
-	x.month_set(m);		//セッターのメンバ関数を呼び出して月を設定する
-	x.day_set(d);		//セッターのメンバ関数を呼び出して日を設定する
-
-	return s;			//入力ストリームsを返却
- }
+//抽出子の多重定義の宣言
+std::istream& operator>> (std::istream& s, Times& x);
