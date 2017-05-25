@@ -142,7 +142,39 @@ std::ostream& operator<<(std::ostream& s, const Date& x)
 }
 
 //抽出子の多重定義の宣言
-std::istream& operator>>(std::istream& s, Date& x);
+std::istream& operator>>(std::istream& s, Date& x)
+{
+	int y;		//年に入力しセットするための変数
+	int m;		//月に入力しセットするための変数
+	int d;		//日に入力しセットするための変数
+	do {
+		//年に入力を促す
+		std::cout << "年：";
+		//キーボードから入力
+		s >> y;
+	}while(y < 0 || 3000 < y);
+
+	do{
+		//月に入力を促す
+		std::cout << "月：";
+		//キーボードから入力
+		s >> m;
+	}while(m < 1 || 12 < m);
+
+	do{
+		//日に入力を促す
+		std::cout << "日：";
+		//キーボードから入力
+		s >> d;
+	}while(d < 1 || 31 < d);
+
+	x.setYear(y);		//セッターのメンバ関数を呼び出して年を設定する
+	x.setMonth(m);		//セッターのメンバ関数を呼び出して月を設定する
+	x.setDay(d);		//セッターのメンバ関数を呼び出して日を設定する
+
+	return s;			//入力ストリームsを返却
+ }
+
 
 //インクルードガードの終わり
 #endif

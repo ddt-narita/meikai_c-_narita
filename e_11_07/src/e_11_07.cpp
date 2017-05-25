@@ -7,21 +7,22 @@
 
 #include<iostream>
 #include<string>
+
 #include"e_11_07.h"
 
 using namespace std;
 
 int main ()
 {
-	string strName = "nike";		//名前を入力するのに使う
-	int nWidth = 0;			//車幅を入力するのに使う
-	int nLength = 0;		//車長を入力するのに使う
-	int nHeight = 0;		//車高を入力するのに使う
-	double dblGas = 0;		//現在のガソリン量を入力するのに使う
-	int nNumber = 0000;	//車のナンバーを入力するのに使う
-	double dblEco = 1;		//燃費を入力するのに使う
-	double dblCapa = 50;	//ガソリンの容量を入力するのに使う
-
+	string strName = "nike";	//名前を入力するのに使う
+	int nWidth = 0;				//車幅を入力するのに使う
+	int nLength = 0;			//車長を入力するのに使う
+	int nHeight = 0;			//車高を入力するのに使う
+	double dblGas = 0;			//現在のガソリン量を入力するのに使う
+	int nNumber = 0000;			//車のナンバーを入力するのに使う
+	double dblEco = 1;			//燃費を入力するのに使う
+	double dblCapa = 50;		//ガソリンの容量を入力するのに使う
+	Date purchase;				//購入年月日を入力するためのオブジェクト
 
 	//データの入力を促す
 	cout << "車のデータを入力してください。\n";
@@ -29,32 +30,46 @@ int main ()
 	cout << "名前：";
 	//キーボードから入力
 	cin  >> strName;
-	//車幅の入力を促す
-	cout << "車幅：";
-	//キーボードから入力
-	cin  >> nWidth;
-	//車長の入力を促す
-	cout << "車長：";
-	//キーボードから入力
-	cin  >> nLength;
-	//車高の入力を促す
-	cout << "車高：";
-	//キーボードから入力
-	cin  >> nHeight;
+
+
+		//車幅の入力を促す
+		cout << "車幅：";
+		//キーボードから入力
+		cin  >> nWidth;
+
+
+	do{
+		//車長の入力を促す
+		cout << "車長：";
+		//キーボードから入力
+		cin  >> nLength;
+	}while(nLength < 0 || 1000 < nLength);
+
+	do{
+		//車高の入力を促す
+		cout << "車高：";
+		//キーボードから入力
+		cin  >> nHeight;
+	}while(nHeight < 0 || 1000< nHeight);
 
 	//車のナンバーの入力を促す
 	cout << "車のナンバー：";
 	//キーボードから入力
 	cin  >> nNumber;
 
-	//燃費の入力を促す
-	cout << "燃費：";
-	//キーボードから入力
-	cin  >> dblEco;
-	//ガソリンの最大容量の入力を促す
-	cout << "ガソリンの最大容量：";
-	//キーボードから入力
-	cin  >> dblCapa;
+	do {
+		//燃費の入力を促す
+		cout << "燃費：";
+		//キーボードから入力
+		cin  >> dblEco;
+	}while(dblEco < 0 || 100 < dblEco);
+
+	do {
+		//ガソリンの最大容量の入力を促す
+		cout << "ガソリンの最大容量：";
+		//キーボードから入力
+		cin  >> dblCapa;
+	}while(dblCapa < 0 || 1000 < dblCapa);
 
 	while(true) {
 		//現在のガソリン量の入力を促す
@@ -68,8 +83,14 @@ int main ()
 			break;
 		}
 	}
+
+	//入力を促す
+	cout << "購入年月日を入力してください";
+	//キーボードから入力
+	cin >> purchase;
+
 	//コンストラクタを呼び出してオブジェクトMyCarを定義
-	Car MyCar(strName,nWidth,nLength,nHeight,dblGas,nNumber,dblEco,dblCapa,Date(2015,5,8));
+	Car MyCar(strName,nWidth,nLength,nHeight,dblGas,nNumber,dblEco,dblCapa,purchase);
 
 	//MyCarのスペックを表示
 	MyCar.print_spec();
