@@ -52,6 +52,7 @@ public:
 
 	std::string to_string()const;		//クラスのデータメンバの表示を年月日でするようにするための関数
 };
+
 //挿入子の多重定義の宣言
 std::ostream& operator<<(std::ostream& s, const Date& x);
 //抽出子の多重定義の宣言
