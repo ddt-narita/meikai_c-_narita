@@ -67,14 +67,12 @@ int main()
 
 int search_idx(int* a, int *b, int n, int key)
 {
-	//配列の先頭要素のポイントを表すポイント型
-	int *ptr = a;
 	//返却するkeyと同値の要素の個数
 	int nKeyCount = 0;
 	//要素数分繰り返す
-	for(int i = 0; i < n; i++, ptr++) {
+	for(int i = 0; i < n; i++, a++) {
 		//要素がkeyと同値の時
-		if(*ptr == key){
+		if(*a == key){
 			//配列bにその要素の番号を格納
 			b[nKeyCount] = i;
 			//同値の個数を数える
