@@ -4,6 +4,8 @@
  * 作成者：成田修之
  */
 
+#include<ctime>
+#include<cstdlib>
 #include<iostream>
 #include<iomanip>
 using namespace std;
@@ -21,21 +23,16 @@ void print2d(int a[][5],int n);
 
 int main ()
 {
+	srand(time(NULL));
 
 	const int nArrayRowNumber = 3;		//2次元配列の行数
 	int nArray[nArrayRowNumber][5];		//2次元配列
-
-	//値の入力を促す
-	cout << "2次元配列の各要素に値を入力してください。\n";
 
 	//行数分繰り返す
 	for(int i = 0; i < nArrayRowNumber; i++) {
 		//列数分繰り返す
 		for(int j = 0; j < 5; j++) {
-			//各要素に入力を促す
-			cout << "nArray[" << i << "][" << j<< "]：";
-			//キーボードから入力
-			cin  >> nArray[i][j];
+			nArray[i][j] = rand() % 1000 - 500;
 		}
 	}
 	//関数print2dを呼び出し、全構成要素を縦横に表示
@@ -52,7 +49,7 @@ void print2d(int a[][5],int n)
 		//列数分繰り返す
 		for(int j = 0; j < 5; j++) {
 			//幅をそろえて各要素を表示
-			cout << setw(5) << a[i][j];
+			cout << left <<setw(6) << a[i][j];
 		}
 		//行ごとに改行
 		cout << "\n";
