@@ -21,7 +21,7 @@ void arymv(int a[],int n,int idx);
 int main()
 {
 	//配列の要素数
-	int nArrayNumber = 6;
+	const int nArrayNumber = 6;
 	//要素数nArrayNumberの配列
 	int nArray[nArrayNumber];
 	//削除する要素の番号
@@ -51,7 +51,7 @@ int main()
 		cout << "nArray[" << i << "] =" << nArray[i] << "\n";
 	}
 
-	//main
+	//main関数の返却値
 	return 0;
 }
 
