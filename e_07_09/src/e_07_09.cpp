@@ -46,10 +46,10 @@ int main()
 	//キーボードから入力
 	cin  >> nIns;
 
-
+	//関数aryinsを呼び出して挿入する
 	aryins(nArray, nArrayNumber, nArrayIdx,nIns);
 
-	//削除後の配列を表示
+	//挿入後後の配列を表示
 	cout << "挿入後の配列を表示します\n";
 	//要素数分繰り返す
 	for(int i = 0 ; i < nArrayNumber; i++) {
