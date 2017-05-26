@@ -15,20 +15,13 @@ using namespace std;
  * 作成者：成田修之
  */
 
-void arynrmv(int a[],int n,int idx,int k)
-{
-	//最後に削除する要素の次の要素から最後まで繰り返す
-	for(int i = 0; i < n - idx - k + 1 ; i++) {
-		//削除する先頭の要素に最後に削除する要素の次の値を代入
-		a[idx - 1 + i] = a[idx - 1 + k +i];
-	}
+void arynrmv(int a[],int n,int idx,int k);
 
-}
 
 int main()
 {
 	//配列の要素数
-	int nArrayNumber = 10;
+	const int nArrayNumber = 10;
 	//要素数nArrayNumberの配列
 	int nArray[nArrayNumber];
 	//削除する要素の番号
@@ -66,4 +59,14 @@ int main()
 
 	//main関数の返却値
 	return 0;
+}
+
+void arynrmv(int a[],int n,int idx,int k)
+{
+	//最後に削除する要素の次の要素から最後まで繰り返す
+	for(int i = 0; i < n - idx - k + 1 ; i++) {
+		//削除する先頭の要素に最後に削除する要素の次の値を代入
+		a[idx - 1 + i] = a[idx - 1 + k +i];
+	}
+
 }
