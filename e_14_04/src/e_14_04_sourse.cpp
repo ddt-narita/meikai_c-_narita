@@ -40,8 +40,10 @@ Matrix::Matrix(const Matrix& mat)
 	height = mat.height;	//行数をコピー
 	width = mat.width;		//列数をコピー
 
+	delete[]this;
+
 	//行数分領域を確保
-	ptr = new double*[mat.height];
+	ptr = new double*[height];
 	//行数分繰り返す
 	for(int i = 0; i < height; i++) {
 		//各行列に列数分領域を確保
@@ -113,33 +115,29 @@ Matrix Matrix::operator *(const Matrix& a)
 }
 
 //代入演算子の多重定義
-Matrix& Matrix::operator =(const Matrix& x){
-	//自分指針でない時
-	if(x != this) {
-		//要素の数が違うとき
-		if(height != x.height && width != x.width) {
-			//各行に確保してた領域を解放
-			for(int i = 0; i < height; i++) {
-				delete []ptr[i];
-			}
-			//行のために確保してた領域を解放
-			delete[]ptr;
+Matrix& Matrix::operator =( Matrix& x){
 
-			//代入する行列の行数列数を代入
-			height = x.height;
-			width = x.width;
+	//要素の数が違うとき
+	if(height != x.height || width != x.width) {
+		//各行に確保してた領域を解放
+		for(int i = 0; i < height; i++) {
+			delete []ptr[i];
+		}
+		//行のために確保してた領域を解放
+		delete[]ptr;
 
-			//行数分の領域を確保
-			ptr = new double*[height];
+		//代入する行列の行数列数を代入
+		height = x.height;
+		width = x.width;
 
-			//行数分繰り返し各行に列数分の領域を確保
-			for(int i = 0; i < height; i++) {
-				ptr[i] = new double[width];
-			}
+		//行数分の領域を確保
+		ptr = new double*[height];
 
+		//行数分繰り返し各行に列数分の領域を確保
+		for(int i = 0; i < height; i++) {
+			ptr[i] = new double[width];
 		}
 	}
-
 	//行数分繰り返す
 	for(int i = 0; i < height; i++) {
 		//列数分繰り返して各要素を代入

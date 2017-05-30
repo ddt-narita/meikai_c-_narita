@@ -47,7 +47,9 @@ public:
 	//積の演算子関数の宣言
 	Matrix operator*(const Matrix& a);
 	//代入演算子関数の宣言
-	Matrix& operator=(const Matrix& a);
+	Matrix& operator=(Matrix& a);
+
+	Ma
 
 	//挿入子の多重定義の宣言
 	friend std::ostream& operator<<(std::ostream& s, const Matrix& x);
