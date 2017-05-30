@@ -13,6 +13,26 @@ class IntArray {
 	int* vec;	//配列の先頭へのポインタ
 
 public:
+
+	//オーバーフローしたときに投げられるIdxRngErrクラス
+	class IdxRngErr {
+	private:
+		IntArray* ident;	//IntArray型へのポインタのデータメンバ
+		int idx;			//引っかかった添字の値
+	public:
+		//コンストラクタ
+		IdxRngErr(IntArray* p, int i):ident(p),idx(i)
+		{
+		}
+
+		//添字の値を返却する関数
+		int index() {
+			return idx;
+		}
+	};
+
+
+
 	//明示的なコンストラクタの定義
 	explicit IntArray(int size):nelem(size) {
 		//要素数分の領域を確保して先頭のポインタに設定
@@ -39,6 +59,11 @@ public:
 
 	//添字演算子の多重定義
 	int & operator[](int i) {
+		//0未満か要素数より多きい対応してない添字が入力されたとき
+		if(i < 0 || i >= nelem) {
+			//オーバーフローのクラスIdxRngErrを投げる
+			throw IdxRngErr(this, i);
+		}
 		//オブジェクトの添字の時の要素を返却
 		return vec[i];
 	}

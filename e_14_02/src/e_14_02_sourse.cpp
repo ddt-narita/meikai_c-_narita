@@ -7,6 +7,7 @@
 #include"e_14_02.h"
 
 
+//コピーコンストラクタ
 IntArray::IntArray(const IntArray& x)
 {
 	//コピー対象が自分自身ではない時
@@ -32,7 +33,7 @@ IntArray::IntArray(const IntArray& x)
 
 }
 
-//
+//代入演算子の多重定義
 IntArray& IntArray::operator=(const IntArray& x)
 {
 	//代入対象が自分自身ではない時
