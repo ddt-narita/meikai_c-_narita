@@ -32,20 +32,25 @@ public:
 		return len;
 	}
 
+	//先頭文字へのポインタを返却する関数
 	char* Ptr() const {
 		return ptr;
 	}
 
+	//文字列オブジェクト同士の足し算の加法演算子関数の宣言
 	String operator+(const String& str);
 
+	//代入演算子関数の宣言
 	String& operator=(const String& str);
 
+	//添字演算子関数の宣言
 	const char operator[](int i) {
 		return ptr[i];
 	}
 
 };
 
+//挿入子の演算子関数の宣言
 std::ostream& operator<<(std::ostream& s, const String& x);
 
 #endif
